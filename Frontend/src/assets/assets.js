@@ -43,6 +43,20 @@ import img_26 from './img_26.png'
 import img_bg_3 from './img_bg_3.png'
 import jpeg from './jpeg.jpg'
 import menu_icon from './menu_icon.png'
+import img_27 from './img_27.jpg'
+import img_28 from './img_28.jpg'
+import img_29 from './img_29.jpg'
+import img_30 from './img_30.jpg'
+import img_31 from './img_31.jpg'
+import img_32 from './img_32.jpg'
+import img_33 from './img_33.jpg'
+import img_34 from './img_34.jpg'
+import img_35 from './img_35.jpg'
+import img_36 from './img_36.jpg'
+import img_37 from './img_37.jpg'
+import img_38 from './img_38.jpg'
+import img_39 from './img_39.jpg'
+import img_40 from './img_40.jpg'
 
 export const assets = {
     favicon,
@@ -89,5 +103,6 @@ export const assets = {
     img_26,
     img_bg_3,
     jpeg,
-    menu_icon
+    menu_icon,
+    img_27,img_28,img_29,img_30,img_31,img_32,img_33,img_34,img_35,img_36,img_37,img_38,img_39,img_40,
 }

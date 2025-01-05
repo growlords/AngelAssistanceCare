@@ -3,6 +3,11 @@ import { assets } from '../assets/assets'
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 
 const Home_2 = () => {
@@ -18,8 +23,26 @@ const Home_2 = () => {
   });
 
 
+  const images = [
+    {img:assets.img_27},
+    {img:assets.img_28},
+    {img:assets.img_29},
+    {img:assets.img_30},
+    {img:assets.img_31},
+    {img:assets.img_32},
+    {img:assets.img_33},
+    {img:assets.img_34},
+    {img:assets.img_35},
+    {img:assets.img_36},
+    {img:assets.img_37},
+    {img:assets.img_38},
+    {img:assets.img_39},
+    {img:assets.img_40},
+  ]
+
 
   return (
+    <div>
     <div className='flex'>
         <div className="left">
         <div className="img" >
@@ -65,8 +88,36 @@ const Home_2 = () => {
             </motion.button>
           </div>
         </div>
+        </div>
+
+        <div className="Images mt-[10rem] overflow-hidden">
+        <Swiper
+          effect={'coverflow'}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={5} 
+          spaceBetween={20} 
+          loop={true} 
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          className="mySwiper"
+        >
+          {images.map((item, index) => (
+            <SwiperSlide key={index} className='bg-center bg-cover'>
+              <img className='block object-contain w-[25rem] h-[20rem]' src={item.img} alt={`slide-${index}`} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
     </div>
-    
   )
 }
 

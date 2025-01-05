@@ -13,6 +13,22 @@ const Services = () => {
       threshold: 0.3, // Trigger animation when 30% of the element is visible
     });
 
+
+    const { ref:Cardref1, inView:CardView1 } = useInView({
+      triggerOnce: true, // Animation will trigger one time
+      threshold: 0.3, // Trigger animation when 30% of the element is visible
+    });
+
+    const { ref:Cardref2, inView:CardView2 } = useInView({
+      triggerOnce: true, // Animation will trigger one time
+      threshold: 0.3, // Trigger animation when 30% of the element is visible
+    });
+
+    const { ref:Cardref3, inView:CardView3 } = useInView({
+      triggerOnce: true, // Animation will trigger one time
+      threshold: 0.3, // Trigger animation when 30% of the element is visible
+    });
+
     const { ref:CareRef, inView: CareinView } = useInView({
       triggerOnce: true, // Animation will trigger one time
       threshold: 0.3, // Trigger animation when 30% of the element is visible
@@ -24,9 +40,15 @@ const Services = () => {
     });
 
     
+    const images = [
+      {img:assets.img_27},
+      {img:assets.img_28},
+      {img:assets.img_29},
+      {img:assets.img_30},
 
+    ]
     
-  const services =
+  const services_card_row_1 =
     [{
       img: assets.Card_icon_4,
       heading: "Assistance with daily personal activities",
@@ -43,9 +65,11 @@ const Services = () => {
       img: assets.Card_icon_6,
       heading: "Assistance with travel/transport arrangements",
       para: "We arrange and provide transportation for our participants, facilitating their participation in community, social, economic, and daily life activities."
-    },
+    }]
 
-    {
+    const services_card_row_2=
+
+    [{
       img: assets.Card_icon_7,
       heading: "Assistance with household tasks",
       para: "We support our participants in managing tasks such as cleaning, laundry, cooking, and home upkeep. "
@@ -104,25 +128,70 @@ const Services = () => {
 
       {/* Cards Section */}
       <div className="w-full h-fit lg:w-[80%] pt-[5rem] mx-auto px-[3rem]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"ref={Cardref1}>
+          {services_card_row_1.map((service, index) => (
+            <motion.div
+            
               key={index}
-              className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-101 w-[20rem] min-h-[30rem] h-fit border-2  rounded-3xl px-2"
+              initial={{opacity: 0, transform: "rotateY(130deg)" }}
+              animate={CardView1?{
+                opacity: 1,
+                transform: "rotateY(0deg)",
+              }:{}}
+              transition={{
+                delay: index * 0.3,
+                duration: 1,
+                ease: "easeInOut",
+              }}
+              whileHover={{ scale: 1.2,
+                y:2
+               }
+            }
+              className="bg-white  p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 hover:scale-101 w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
             >
               <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
               <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
               <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-        <div className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-101 w-full border-2 rounded-3xl h-fit pb-20 px-2 flex flex-col items-center mt-[2rem]">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"ref={Cardref2}>
+          {services_card_row_2.map((service, index) => (
+            <motion.div
+            
+              key={index}
+              initial={{opacity: 0, transform: "rotateY(130deg)" }}
+              animate={CardView2?{
+                opacity: 1,
+                transform: "rotateY(0deg)",
+              }:{}}
+              transition={{
+                delay: index * 0.3,
+                duration: 1,
+                ease: "easeInOut",
+              }}
+              className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-101 w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2"
+            >
+              <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
+              <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
+              <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
+            </motion.div>
+          ))}
+        </div>
+
+
+        <motion.div ref={Cardref3}
+        initial={{x:"-10rem", opacity:0}}
+        animate={CardView3?{x:0, opacity:1}:{}}
+        transition={{ duration: 1.5, ease: easeInOut }}
+         className=" p-6 w-full border-2 rounded-3xl h-fit pb-20 px-2 flex flex-col items-center mt-[2rem]">
           <img src={assets.Card_icon_8} alt="error" className="w-2rem h-12 object-cover" />
           <h3 className="heading font-semibold text-2xl">Innovative community participation</h3>
           <p className="break-words text-center">
             Engaging programs that foster social connections and skill development in a safe, supportive environment.
           </p>
-        </div>
+        </motion.div>
       </div>
 
 
