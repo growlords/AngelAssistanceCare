@@ -2,20 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active hr{
-  display:block
+/* Active link styling */
+a.active hr {
+  @apply block; /* Using Tailwind's utility classes for consistency */
 }
 
-@media(max-width:640px){
-  a.active{
-      background-color: black;
-      color:white
+/* Responsive styling for active links on small screens */
+@media (max-width: 640px) {
+  a.active {
+    @apply bg-black text-white; /* Tailwind utilities for background and text color */
   }
 }
-input:-webkit-autofill,
-textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-  box-shadow: 0 0 0px 1000px transparent inset !important;
-  -webkit-text-fill-color: #000 !important; /* Adjust text color if needed */
+
+/* Reset margin and padding for html and body */
+html, body {
+  @apply m-0 p-0;
+  @apply w-full h-full; /* Ensure full width and height */
 }
 
+/* Ensure the root div takes full height */
+#root {
+  @apply min-h-screen;
+}

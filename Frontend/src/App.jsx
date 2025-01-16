@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="flex-grow px-3 sm:px-[2vw] md:px-[4vw] lg:px-[5vw]">
   <Navbar />
-  <div className="">
+  <div className=" w-full">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />

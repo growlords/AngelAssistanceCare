@@ -27,7 +27,6 @@ const Home_contact = () => {
   const onSubmit = async (data) => {
     await delay(1.5);
 
-
     try {
       // Prepare FormData
       const formData = new FormData();
@@ -39,8 +38,7 @@ const Home_contact = () => {
       const response = await fetch("http://localhost:3000/api/contact", { // Adjust to match your backend route
         method: "POST",
         body: formData,
-    });
-
+      });
 
       if (response.ok) {
         setSubmissionSuccess(true); // Show success message
@@ -69,9 +67,9 @@ const Home_contact = () => {
   });
 
   return (
-    <div className='flex mt-36 main'>
-      <div className='ml-36 left w-[45rem]'>
-        <motion.div ref={ref} className='text-4xl w-[40rem] font-medium'
+    <div className='flex flex-col sm:flex-row mt-36 px-4 sm:px-0'>
+      <div className='left w-full sm:w-[45rem] sm:ml-36'>
+        <motion.div ref={ref} className='text-4xl font-medium text-center sm:text-left'
           initial={{ x: -80, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: -180, opacity: 0 }}
           transition={{ duration: 1.2, ease: easeInOut }}
@@ -79,11 +77,11 @@ const Home_contact = () => {
           Learn more by contacting us and scheduling a visit with our supportive team.
         </motion.div>
 
-        <div className='mt-28 text-lg w-[35rem]'>
+        <div className='mt-10 sm:mt-28 text-lg'>
           We create experiences that bring joy and enrich every moment.
         </div>
         <p className='w-8 md:w-[10rem] h-[1.7px] bg-[#414141] mt-10'></p>
-        <div className="logo mt-24 flex items-center w-[40rem]">
+        <div className="logo mt-10 sm:mt-24 flex items-center">
           <IoIosContacts className="text-7xl" />
           <div className="flex flex-col justify-center ml-10">
             <div className="text-lg font-semibold">Contact us today!</div>
@@ -91,9 +89,9 @@ const Home_contact = () => {
           </div>
         </div>
       </div>
-      <div className='right'>
+      <div className='right w-full sm:w-auto'>
         <motion.div ref={Ref}
-          className="card ml-7 mt-5 w-[22rem]"
+          className="card mt-5 w-full sm:w-[22rem] mx-auto"
           initial={{ y: "18rem", opacity: 0 }}
           animate={ComeInView ? { y: 0, opacity: 1 } : { y: "18rem", opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -121,12 +119,12 @@ const Home_contact = () => {
                 )}
               </ul>
             </div>
-            <div className='flex mb-4 gap-4'>
-              <div>
+            <div className='flex flex-col sm:flex-row mb-4 gap-4'>
+              <div className='w-full'>
                 <input className='rounded focus:outline-none focus:ring-0 w-full' placeholder="Name" type="text" {...register("username", { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/ })} />
                 <p className='w-full h-[1px] bg-[#dcdbdb] mt-5'></p>
               </div>
-              <div>
+              <div className='w-full'>
                 <input className='rounded focus:outline-none focus:ring-0 w-full' placeholder='Phone Number' type="tel" {...register("Phone_Number", { required: true })} />
                 <p className='w-full h-[1px] bg-[#DCDCDB] mt-5'></p>
               </div>

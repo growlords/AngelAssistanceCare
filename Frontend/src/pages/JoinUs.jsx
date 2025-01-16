@@ -66,12 +66,10 @@ const JoinUs = () => {
     }
   };
 
- const { ref, inView} = useInView({
-     triggerOnce: true, // Animation will trigger one time
-     threshold: 0.3, // Trigger animation when 30% of the element is visible
-   });
-
-
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animation will trigger one time
+    threshold: 0.3, // Trigger animation when 30% of the element is visible
+  });
 
   return (
     <div>
@@ -85,30 +83,30 @@ const JoinUs = () => {
           role="img"
           aria-label="Background image"
         />
-        <div className="relative h-full flex flex-col items-center justify-center ">
-          <motion.h1 
-          ref={ref}
-          className="w-[45rem] text-5xl font-bold text-gray-800 tracking-wider text-center"
-          initial={{ y: -50, opacity: 0 }}
-          animate={inView ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
-          transition={{ duration: 1 }}
+        <div className="relative h-full flex flex-col items-center justify-center px-4">
+          <motion.h1
+            ref={ref}
+            className="w-full max-w-[45rem] text-3xl sm:text-5xl font-bold text-gray-800 tracking-wider text-center"
+            initial={{ y: -50, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
+            transition={{ duration: 1 }}
           >
             WE WOULD LOVE TO HAVE YOU ON OUR TEAM
           </motion.h1>
-          <p className="w-[35rem] flex flex-col text-center mt-4">
+          <p className="w-full max-w-[35rem] text-center mt-4">
             Your skills and passion would be an invaluable addition.
           </p>
         </div>
       </div>
-      <div className="flex justify-center mt-[5rem]">
-        <div className="max-w-[45rem] text-5xl items-center text-center font-medium tracking-wide">
+      <div className="flex justify-center mt-[5rem] px-4">
+        <div className="w-full max-w-[45rem] text-2xl sm:text-5xl items-center text-center font-medium tracking-wide">
           Fill up our form below
         </div>
       </div>
 
-      <div className="flex items-center justify-center ">
-        <form className="w-[40rem] p-8" onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" name="formType" value="cv" />
+      <div className="flex items-center justify-center px-4">
+        <form className="w-full max-w-[40rem] p-8" onSubmit={handleSubmit(onSubmit)}>
+          <input type="hidden" name="formType" value="cv" />
           <div className="mb-5"></div>
           <div className="flex flex-col gap-5">
             <div className="w-full">
