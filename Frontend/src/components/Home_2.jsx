@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+import 'swiper/css/pagination';  
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 
 const Home_2 = () => {
@@ -39,7 +39,7 @@ const Home_2 = () => {
   ]
 
   return (
-    <div className='px-4 sm:px-0 '>
+    <div className='px-4 sm:px-0 md:mb-0 mt-[8rem] '>
       <div className='flex flex-col sm:flex-row'>
         <div className="left flex-1 flex justify-center sm:justify-start">
           <div className="img">

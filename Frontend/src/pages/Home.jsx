@@ -6,7 +6,7 @@ import Home_conatct from '../components/Home_conatct'
 
 const Home = () => {
   return (
-    <div>
+    <div className='mt-8'>
       <Home_1/>
       <Home_2/>
       <Home_3/>
