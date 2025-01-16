@@ -1,23 +1,20 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React, { useState } from 'react';
+import { assets } from '../assets/assets';
 import { useForm } from "react-hook-form";
-import { useState } from 'react';
 import { MdArrowForward } from "react-icons/md";
 import { easeInOut } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
 
 const Enquiries = () => {
-
-  const [SubmissionSuccess, setSubmissionSuccess] = useState(false)
+  const [SubmissionSuccess, setSubmissionSuccess] = useState(false);
   const [cardHeight, setCardHeight] = useState('auto');
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
-    formState: { errors, isSubmitting, isSubmitted },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const handleTextareaChange = (e) => {
@@ -34,12 +31,26 @@ const Enquiries = () => {
 
   const onSubmit = async (data) => {
     await delay(2);
-    console.log(data);
-    setSubmissionSuccess(true);
-    setTimeout(() => {
-      setSubmissionSuccess(false);
-    }, 2000);
-    reset();
+
+    try {
+      const response = await fetch("http://localhost:3000/api/contact", { // Adjust to match your backend route
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // Send JSON data
+      });
+
+      if (response.ok) {
+        setSubmissionSuccess(true); // Show success message
+        setTimeout(() => setSubmissionSuccess(false), 2000);
+        reset();
+      } else {
+        console.error("Failed to submit:", await response.text());
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const { ref, inView } = useInView({
@@ -161,10 +172,10 @@ const Enquiries = () => {
       </div>
 
       <div className='flex justify-center mt-[5rem]'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100932.78588980011!2d144.39235493662972!3d-37.76309122635224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6f3a6dc7b0159%3A0x1c045678462e3f60!2sEynesbury%20VIC%203338%2C%20Australia!5e0!3m2!1sen!2sin!4v1736178597374!5m2!1sen!2sin" width="600" height="450"  allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100932.78588980011!2d144.39235493662972!3d-37.76309122635224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6f3a6dc7b0159%3A0x1c045678462e3f60!2sEynesbury%20VIC%203338%2C%20Australia!5e0!3m2!1sen!2sin!4v1736178597374!5m2!1sen!2sin" width="600" height="450" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   )
 }
 
-export default Enquiries
+export default Enquiries;

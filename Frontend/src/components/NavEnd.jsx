@@ -1,15 +1,12 @@
-import React from 'react'
-import { assets } from '../assets/assets'
-import { FiFacebook } from "react-icons/fi";
+import React, { useState } from 'react';
+import { assets } from '../assets/assets';
+import { FiFacebook, FiYoutube, FiPhone } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
-import { FiYoutube } from "react-icons/fi";
+import { TfiEmail } from "react-icons/tfi";
 import { useForm } from "react-hook-form";
 import { motion } from 'framer-motion';
 import { MdArrowForward } from "react-icons/md";
-import { useState } from 'react';
 import { useInView } from "react-intersection-observer";
-import { FiPhone } from "react-icons/fi";
-import { TfiEmail } from "react-icons/tfi";
 
 const NavEnd = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
@@ -43,13 +40,12 @@ const NavEnd = () => {
     await delay(2);
 
     try {
-      // Prepare FormData
-      const formData = new FormData();
-      formData.append("Email", data.Email);
-
       const response = await fetch("http://localhost:3000/api/subscription", {
         method: "POST",
-        body: formData, // Send FormData directly
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // Send JSON data
       });
 
       console.log("Form Data:", data);
@@ -172,4 +168,4 @@ const NavEnd = () => {
   )
 }
 
-export default NavEnd
+export default NavEnd;

@@ -13,7 +13,7 @@ const Home_contact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitted },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const delay = (d) => {
@@ -28,16 +28,12 @@ const Home_contact = () => {
     await delay(1.5);
 
     try {
-      // Prepare FormData
-      const formData = new FormData();
-      formData.append("username", data.username);
-      formData.append("Email", data.Email);
-      formData.append("Phone_Number", data.Phone_Number);
-      formData.append("Message", data.Message);
-
       const response = await fetch("http://localhost:3000/api/contact", { // Adjust to match your backend route
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // Send JSON data
       });
 
       if (response.ok) {
@@ -148,10 +144,9 @@ const Home_contact = () => {
               <button
                 type='submit'
                 disabled={isSubmitting}
-                className={`text-lg px-20 py-3 rounded-full flex items-center ${
-                  isSubmitting
-                    ? "bg-[#cccccc] text-[#888888] cursor-not-allowed"
-                    : "bg-[#171756] text-white"
+                className={`text-lg px-20 py-3 rounded-full flex items-center ${isSubmitting
+                  ? "bg-[#cccccc] text-[#888888] cursor-not-allowed"
+                  : "bg-[#171756] text-white"
                 }`}
               >
                 Submit <MdArrowForward className='ml-2 text-lg' />

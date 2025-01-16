@@ -12,9 +12,7 @@ const app = express();
 const port = 3000;
 
 // Use CORS middleware
-app.use(bodyParser.urlencoded({
-  extended:true
-}))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -111,16 +109,16 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Handle subscibe form submission
+// Handle subscribe form submission
 app.post('/api/subscription', async (req, res) => {
   try {
     console.log('Received Data:', req.body);
-    const {Email } = req.body;
+    const { Email } = req.body;
 
     const mailOptions = {
       from: process.env.SMTP_MAIL, // Use environment variables
       to: process.env.SMTP_MAIL, // Use environment variables
-      subject: 'SomeBody Has Subscribed',
+      subject: 'Somebody Has Subscribed',
       text: `
         A new subscription received:
 
@@ -129,10 +127,10 @@ app.post('/api/subscription', async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).send('Contact form submitted successfully!');
+    res.status(200).send('Subscription form submitted successfully!');
   } catch (error) {
-    console.error('Error in contact form submission:', error);
-    res.status(500).send('An error occurred while submitting the contact form.');
+    console.error('Error in subscription form submission:', error);
+    res.status(500).send('An error occurred while submitting the subscription form.');
   }
 });
 
