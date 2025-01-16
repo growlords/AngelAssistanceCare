@@ -203,14 +203,7 @@ const Services = () => {
 
       <div className="px-4 sm:px-[10rem] flex flex-col gap-10 sm:gap-[10rem] mt-10 sm:mt-[10rem]">
         <motion.div className="flex flex-col sm:flex-row items-center sm:items-start" ref={CareRef}>
-          <motion.h1
-            initial={{ x: -100, opacity: 0 }}
-            animate={CareinView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
-            transition={{ duration: 1.2, ease: easeInOut }}
-            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
-          >
-            Care
-          </motion.h1>
+          
           <motion.img
             initial={{ x: 170, opacity: 0 }}
             animate={CareinView ? { x: 0, opacity: 1 } : { x: 170, opacity: 0 }}
@@ -220,6 +213,14 @@ const Services = () => {
             alt="network error"
           />
           <div className="flex-col mb-8 sm:mb-0 sm:mr-8 order-2 sm:order-1">
+          <motion.h1
+            initial={{ x: -100, opacity: 0 }}
+            animate={CareinView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
+            transition={{ duration: 1.2, ease: easeInOut }}
+            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
+          >
+            Care
+          </motion.h1>
             <p className="text-lg sm:text-xl">
               We deliver personalized and inclusive care, guided by best practices. Our focus is on supporting participants to achieve their goals and desired outcomes, ensuring their physical health, mental well-being, and social connections are prioritized.
             </p>
@@ -230,14 +231,7 @@ const Services = () => {
         </motion.div>
 
         <motion.div className="flex flex-col sm:flex-row items-center sm:items-start" ref={LifeStyleRef}>
-          <motion.h1
-            initial={{ x: 100, opacity: 0 }}
-            animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{ duration: 1.2, ease: easeInOut }}
-            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
-          >
-            Lifestyle
-          </motion.h1>
+         
           <motion.img
             initial={{ x: -170, opacity: 0 }}
             animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: -170, opacity: 0 }}
@@ -247,6 +241,14 @@ const Services = () => {
             alt="network error"
           />
           <div className="flex-col order-2 sm:order-3">
+          <motion.h1
+            initial={{ x: 100, opacity: 0 }}
+            animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+            transition={{ duration: 1.2, ease: easeInOut }}
+            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
+          >
+            <h1>LifeStyle</h1>
+          </motion.h1>
             <p className="text-lg sm:text-xl">
               At AngelAssistCare, every day is unique with the diverse range of activities and lifestyle options we offer. Whether it’s engaging in indoor activities, exploring the outdoors, or going on excursions, we ensure our participants have an enjoyable experience. We design personalized and group schedules tailored to their preferences.
             </p>

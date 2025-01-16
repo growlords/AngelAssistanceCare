@@ -48,11 +48,8 @@ const Home_1 = () => {
           </div>
         </div>
       </div>
-
-      ...
-      ...
-      <div className="divR flex-1 relative top-16 left-14 rounded-full flex justify-center sm:justify-end mb-[50rem]">
-        <motion.div className="imgB w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] object-cover rounded-full overflow-hidden flex justify-center items-center"
+      <div className="divR flex-1 relative top-16 rounded-full flex justify-center sm:justify-end">
+        <motion.div className="imgB w-[275px] h-[275px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] object-cover rounded-full overflow-hidden flex justify-center items-center"
           animate={{
             scale: [1, 1.1, 1.1, 1],
             rotate: [180, 180, 0, 0],
@@ -70,8 +67,6 @@ const Home_1 = () => {
           />
         </motion.div>
       </div>
-...
-...
     </div>
   )
 }
