@@ -4,6 +4,7 @@ import { assets } from '../assets/assets';
 import { easeInOut, motion } from "framer-motion";
 import { Link } from 'react-router-dom'
 
+
 const Home_1 = () => {
   return (
     <div className='divM w-full h-screen flex flex-col sm:flex-row' >
