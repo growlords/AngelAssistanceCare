@@ -47,7 +47,6 @@ app.get('/', (req, res) => {
 app.post('/api/send-mail', upload.single('file'), async (req, res) => {
   try {
     const { username, LastName, Location, Email, Phone_Number } = req.body;
-    const file = req.file;
 
     if (!file) {
       return res.status(400).send('File upload failed!');
@@ -84,7 +83,6 @@ app.post('/api/send-mail', upload.single('file'), async (req, res) => {
 // Handle contact form submission
 app.post('/api/contact', async (req, res) => {
   try {
-    console.log('Received Data:', req.body);
     const { username, Phone_Number, Email, Message } = req.body;
 
     const mailOptions = {
@@ -112,7 +110,6 @@ app.post('/api/contact', async (req, res) => {
 // Handle subscribe form submission
 app.post('/api/subscription', async (req, res) => {
   try {
-    console.log('Received Data:', req.body);
     const { Email } = req.body;
 
     const mailOptions = {

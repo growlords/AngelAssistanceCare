@@ -118,42 +118,42 @@ const About = () => {
       </div>
 
       <div className='flex flex-col sm:flex-row gap-5 px-4 sm:px-0'>
-        <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref1}
-         initial={{ x: isMobile ? -120 : -120, opacity: 0 }}
-         animate={InView1 ? { x: 0, opacity: 1 } : { x: isMobile ? -120 : -120, opacity: 0 }}
-         transition={{ duration: 1.2, ease: easeInOut }}
-        >
-          <div> <img className='w-[5rem] h-[3.5rem] ' src={assets.img_22} alt="" /></div>
-          <div>
-            <h1 className='text-xl font-semibold'>Experienced Professionals</h1>
-            <p>Dedicated professionals committed to exceptional, compassionate care.</p>
-          </div>
-        </motion.div>
-
-        <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref2}
-        initial={{ x: isMobile ? 120 : 0, opacity: 0 }}
-        animate={InView2 ? { x: 0, opacity: 1 } : { x: isMobile ? 120 : 0, opacity: 0 }}
+      <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref1}
+        initial={{ x: isMobile ? -20 : -120, opacity: 0 }}
+        animate={InView1 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : -120, opacity: 0 }}
         transition={{ duration: 1.2, ease: easeInOut }}
-        >
-          <div> <img className='w-[5rem] h-[3.5rem] ' src={assets.img_21} alt="" /></div>
-          <div>
-            <h1 className='text-xl font-semibold'>Our Growth Journey</h1>
-            <p>Evolving to enhance support for individuals with disabilities.</p>
-          </div>
-        </motion.div>
+      >
+        <div> <img className='w-[5rem] h-[3.5rem]' src={assets.img_22} alt="" /></div>
+        <div>
+          <h1 className='text-xl font-semibold'>Experienced Professionals</h1>
+          <p>Dedicated professionals committed to exceptional, compassionate care.</p>
+        </div>
+      </motion.div>
 
-        <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref3}
-        initial={{ x: isMobile ? -120 : 120, opacity: 0 }}
-        animate={InView3 ? { x: 0, opacity: 1 } : { x: isMobile ? -120 : 120, opacity: 0 }}
+      <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref2}
+        initial={{ x: isMobile ? 20 : 0, opacity: 0 }}
+        animate={InView2 ? { x: 0, opacity: 1 } : { x: isMobile ? 20 : 0, opacity: 0 }}
         transition={{ duration: 1.2, ease: easeInOut }}
-        >
-          <div> <img className='w-[5rem] h-[3.5rem] ' src={assets.img_23} alt="" /></div>
-          <div>
-            <h1 className='text-xl font-semibold'>Innovative Solutions</h1>
-            <p>Inspiring solutions to improve lives and enhance care.</p>
-          </div>
-        </motion.div>
-      </div>
+      >
+        <div> <img className='w-[5rem] h-[3.5rem]' src={assets.img_21} alt="" /></div>
+        <div>
+          <h1 className='text-xl font-semibold'>Our Growth Journey</h1>
+          <p>Evolving to enhance support for individuals with disabilities.</p>
+        </div>
+      </motion.div>
+
+      <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref3}
+        initial={{ x: isMobile ? -20 : 120, opacity: 0 }}
+        animate={InView3 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : 120, opacity: 0 }}
+        transition={{ duration: 1.2, ease: easeInOut }}
+      >
+        <div> <img className='w-[5rem] h-[3.5rem]' src={assets.img_23} alt="" /></div>
+        <div>
+          <h1 className='text-xl font-semibold'>Innovative Solutions</h1>
+          <p>Inspiring solutions to improve lives and enhance care.</p>
+        </div>
+      </motion.div>
+    </div>
 
       <div className="mt-[10rem] flex flex-col sm:flex-row justify-center px-4 sm:px-0">
         <div className="h-[20rem] sm:h-[30rem] w-full sm:w-[40rem] overflow-hidden">

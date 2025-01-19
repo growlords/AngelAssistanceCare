@@ -38,7 +38,7 @@ const Home_1 = () => {
 
         <div className="buttons flex items-center mt-6 px-4 sm:px-0">
           <div className="button">
-            <motion.button className="relative text-xl px-9 py-5 bg-[#171756] text-white rounded-full overflow-hidden group"
+            <motion.button className="relative text-xl px-9 py-5 bg-[#171756] text-white rounded-full overflow-hidden group "
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}>
