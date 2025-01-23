@@ -63,9 +63,9 @@ const Home_contact = () => {
   });
 
   return (
-    <div className='flex flex-col sm:flex-row mt-36 px-4 sm:px-0'>
-      <div className='left w-full sm:w-[45rem] sm:ml-36'>
-        <motion.div ref={ref} className='text-4xl font-medium text-center sm:text-left'
+    <div className='flex flex-col lg:flex-row  mt-36 px-4 sm:px-0'>
+      <div className='left w-full lg:w-[45rem] md:w-[30rem]  sm:ml-36'>
+        <motion.div ref={ref} className='text-4xl md: font-medium text-center sm:text-left'
           initial={{ x: -80, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: -180, opacity: 0 }}
           transition={{ duration: 1.2, ease: easeInOut }}

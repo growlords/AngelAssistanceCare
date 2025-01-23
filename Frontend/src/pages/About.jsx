@@ -66,7 +66,7 @@ const About = () => {
           >
             WHO WE ARE
           </motion.h1>
-          <p className="w-full sm:w-[60rem] text-center mt-4 sm:mt-0">
+          <p className="w-full lg:w-[60rem] md:w-[40rem] text-center mt-4 sm:mt-0">
             Our journey began with a shared commitment to improving the quality of care for those we serve. We believe in a holistic approach, focusing not only on physical health but also on emotional and social well-being. Our goal is to provide tailored support that meets the unique needs of everyone, fostering independence and enhancing quality of life.
           </p>
         </div>
@@ -169,8 +169,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className='bg-slate-500 flex justify-center'>
-        <div className='flex flex-col sm:flex-row flex-wrap gap-12 p-4 sm:p-[5rem]'>
+      <div className='bg-slate-500 flex justify-center '>
+        <div className='flex flex-col sm:flex-row flex-wrap gap-12 p-4 sm:p-[5rem] md:justify-center '>
           <div ref={ref} className='flex flex-col gap-4 items-center'>
             <p className='text-2xl sm:text-4xl font-bold'>
               {inView && <CountUp start={0} end={100} duration={1} suffix="k" />}

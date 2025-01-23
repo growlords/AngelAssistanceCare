@@ -24,3 +24,24 @@ html, body {
 #root {
   @apply min-h-screen;
 }
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.high-contrast a {
+  color: #00ffff;
+}
+
+.high-contrast button {
+  background-color: #ffffff;
+  color: #000000;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Accessibility,
   Type, 
@@ -60,12 +60,12 @@ const AccessibilityTools = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     applyStyles();
   }, [fontSize, isGrayscale, isHighContrast, isNegativeContrast, isLightBackground, underlineLinks]);
 
   return (
-    <div className="fixed right-4 top-4 z-50">
+    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
       {/* Main Accessibility Icon Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}

@@ -12,7 +12,7 @@ import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 const Home_2 = () => {
 
   const { ref, inView } = useInView({
-    triggerOnce: false, // Animation will trigger every time
+    triggerOnce: true, // Animation will trigger only once 
     threshold: 0.3, // Trigger animation when 30% of the element is visible
   });
 
@@ -39,13 +39,13 @@ const Home_2 = () => {
   ]
 
   return (
-    <div className='px-4 sm:px-0 md:mb-0 mt-[8rem] '>
-      <div className='flex flex-col sm:flex-row'>
-        <div className="left flex-1 flex justify-center sm:justify-start">
-          <div className="img">
+    <div className='px-4 sm:px-0 md:mb-0 mt-[5rem] '>
+      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row'>
+        <div className="left flex-1 flex justify-center sm:justify-start md:justify-center lg:justify-start">
+          <div className="img md:mt-[5rem]">
             <motion.img
               ref={ref}
-              className="overflow-hidden object-cover w-full sm:w-auto"
+              className="overflow-hidden object-cover w-full sm:w-auto md:w-[25rem] lg:w-full"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{
                 opacity: inView ? 1 : 0, // Fade in when in view
@@ -62,7 +62,7 @@ const Home_2 = () => {
           </div>
         </div>
 
-        <div className="right flex-1 relative sm:left-28 sm:top-10 w-full sm:w-auto">
+        <div className="right flex-1 relative sm:left-18 sm:top-10 w-full sm:w-auto">
           <div className="line_1">
             <h5 className='font-semibold text-xl pb-2'>AngelAssistCare</h5>
           </div>

@@ -119,9 +119,9 @@ const NavEnd = () => {
         </motion.div>
       </div>
 
-      <div className="center_2 mt-14 sm:mt-[15rem] flex flex-col sm:flex-row items-center">
+      <div className="center_2 mt-14 sm:mt-[15rem] flex flex-col md:flow-col lg:flex-row items-center">
         <div className='left w-full sm:w-auto'>
-          <img className='h-auto sm:h-[35rem] w-full sm:w-[45rem]' src={assets.img_19} alt="" />
+          <img className='h-auto lg:h-[35rem] w-full lg:w-[45rem] ' src={assets.img_19} alt="" />
         </div>
         <div className="right mt-10 sm:mt-[5rem] flex flex-col gap-3 sm:ml-[4rem] justify-center items-center sm:items-start">
           <div className='text-lg font-medium tracking-widest'>STAY UPDATED!</div>

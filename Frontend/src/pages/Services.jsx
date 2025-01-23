@@ -3,8 +3,24 @@ import { assets } from "../assets/assets";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { easeInOut } from "framer-motion";
+import React, { useState, useEffect } from 'react';
 
 const Services = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const { ref, inView } = useInView({
     triggerOnce: true, // Animation will trigger one time
     threshold: 0.3, // Trigger animation when 30% of the element is visible
@@ -35,7 +51,7 @@ const Services = () => {
     threshold: 0.3, // Trigger animation when 30% of the element is visible
   });
 
-  const services_card_row_1 = [
+  const services_card_row = [
     {
       img: assets.Card_icon_4,
       heading: "Assistance with daily personal activities",
@@ -51,9 +67,6 @@ const Services = () => {
       heading: "Assistance with travel/transport arrangements",
       para: "We arrange and provide transportation for our participants, facilitating their participation in community, social, economic, and daily life activities.",
     },
-  ];
-
-  const services_card_row_2 = [
     {
       img: assets.Card_icon_7,
       heading: "Assistance with household tasks",
@@ -86,8 +99,8 @@ const Services = () => {
         />
         <motion.div
           ref={ref}
-          initial={{ y: -70, opacity: 0 }}
-          animate={inView ? { y: 0, opacity: 1 } : { y: -70, opacity: 0 }}
+          initial={{ y: -20, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
           transition={{ duration: 1.2, ease: easeInOut }}
           className="relative h-full flex items-center justify-center"
         >
@@ -103,7 +116,7 @@ const Services = () => {
           <div className="text-2xl sm:text-4xl font-bold">Our Services</div>
         </div>
         <div>
-          <p className="w-8 md:w-[1.6px] h-[4rem] bg-[#414141] flex justify-center items-center"></p>
+          <p className="w-[0.2rem] h-[3rem] sm:h-[5rem] bg-[#414141] flex justify-center items-center"></p>
         </div>
         <div className="text-center w-full sm:w-[40rem]">
           We are committed to delivering exceptional services tailored to meet each participant’s unique needs.
@@ -112,51 +125,38 @@ const Services = () => {
 
       {/* Cards Section */}
       <div className="w-full h-fit lg:w-[80%] pt-10 sm:pt-[5rem] mx-auto px-4 sm:px-[3rem]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" ref={CardRef1}>
-          {services_card_row_1.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, transform: "rotateY(130deg)" }}
-              animate={CardView1 ? { opacity: 1, transform: "rotateY(0deg)" } : {}}
-              transition={{
-                delay: index * 0.3,
-                duration: 1,
-                ease: "easeInOut",
-              }}
-              whileHover={{ scale: 1.05, y: 2 }}
-              className="bg-white p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
-            >
-              <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
-              <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
-              <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" ref={CardRef2}>
-          {services_card_row_2.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, transform: "rotateY(130deg)" }}
-              animate={CardView2 ? { opacity: 1, transform: "rotateY(0deg)" } : {}}
-              transition={{
-                delay: index * 0.3,
-                duration: 1,
-                ease: "easeInOut",
-              }}
-              className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2"
-            >
-              <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
-              <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
-              <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services_card_row.map((service, index) => {
+            const { ref: cardRef, inView: cardInView } = useInView({
+              triggerOnce: true,
+              threshold: 0.3,
+            });
+            return (
+              <motion.div
+                key={index}
+                ref={cardRef}
+                initial={{ opacity: 0, transform: "rotateY(130deg)" }}
+                animate={cardInView ? { opacity: 1, transform: "rotateY(0deg)" } : {}}
+                transition={{
+                  delay: index * 0.3,
+                  duration: 1,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.05, y: 2 }}
+                className="bg-white p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
+              >
+                <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
+                <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
+                <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
           ref={CardRef3}
-          initial={{ x: "-10rem", opacity: 0 }}
-          animate={CardView3 ? { x: 0, opacity: 1 } : {}}
+          initial={{ x: isMobile ? 0 : "-10rem", opacity: 0 }}
+          animate={CardView3 ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : "-10rem", opacity: 0 }}
           transition={{ duration: 1.5, ease: easeInOut }}
           className="p-6 w-full border-2 rounded-3xl h-fit pb-20 px-2 flex flex-col items-center mt-[2rem]"
         >
@@ -202,69 +202,68 @@ const Services = () => {
       </div>
 
       <div className="px-4 sm:px-[10rem] flex flex-col gap-10 sm:gap-[10rem] mt-10 sm:mt-[10rem]">
-        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start" ref={CareRef}>
-          
+        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start md:flex-col lg:flex-row" ref={CareRef}>
           <motion.img
-            initial={{ x: 170, opacity: 0 }}
-            animate={CareinView ? { x: 0, opacity: 1 } : { x: 170, opacity: 0 }}
+            initial={{ x: isMobile ? 0 : 50, opacity: 0 }}
+            animate={CareinView ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : 50, opacity: 0 }}
             transition={{ duration: 1.2, ease: easeInOut }}
-            className="rounded-3xl w-full sm:w-[40rem] h-[20rem] sm:h-[25rem] object-cover order-1 sm:order-2"
+            className="rounded-3xl w-full sm:w-[40rem] h-[20rem] sm:h-[25rem] object-cover order-1 sm:order-2 md:mt-4"
             src={assets.img_25}
             alt="network error"
           />
-          <div className="flex-col mb-8 sm:mb-0 sm:mr-8 order-2 sm:order-1">
-          <motion.h1
-            initial={{ x: -100, opacity: 0 }}
-            animate={CareinView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
-            transition={{ duration: 1.2, ease: easeInOut }}
-            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
-          >
-            Care
-          </motion.h1>
-            <p className="text-lg sm:text-xl">
+          <div className="flex-col mb-8 sm:mb-0 sm:mr-8 order-2 sm:order-1 ">
+            <motion.h1
+              initial={{ x: isMobile ? 0 : -50, opacity: 0 }}
+              animate={CareinView ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : -50, opacity: 0 }}
+              transition={{ duration: 1.2, ease: easeInOut }}
+              className="text-3xl lg:text-5xl md:text-4xl font-bold mb-4 order-1 sm:order-1"
+            >
+              Care
+            </motion.h1>
+            <p className="text-lg lg:text-xl md:text-lg">
               We deliver personalized and inclusive care, guided by best practices. Our focus is on supporting participants to achieve their goals and desired outcomes, ensuring their physical health, mental well-being, and social connections are prioritized.
             </p>
-            <p className="mt-4 text-lg sm:text-xl">
+            <p className="mt-4 text-lg lg:text-xl md:text-lg">
               We provide dedicated, compassionate support workers available on-site 24/7, with a registered nurse on-call around the clock to ensure continuous care and assistance.
             </p>
           </div>
         </motion.div>
 
-        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start" ref={LifeStyleRef}>
-         
-          <motion.img
-            initial={{ x: -170, opacity: 0 }}
-            animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: -170, opacity: 0 }}
-            transition={{ duration: 1.2, ease: easeInOut }}
-            className="rounded-3xl w-full sm:w-[40rem] h-[20rem] sm:h-[25rem] object-cover mb-8 sm:mb-0 sm:mr-8 order-1 sm:order-2"
-            src={assets.img_26}
-            alt="network error"
-          />
-          <div className="flex-col order-2 sm:order-3">
-          <motion.h1
-            initial={{ x: 100, opacity: 0 }}
-            animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{ duration: 1.2, ease: easeInOut }}
-            className="text-3xl sm:text-5xl font-bold mb-4 order-1 sm:order-1"
-          >
-            <h1>LifeStyle</h1>
-          </motion.h1>
-            <p className="text-lg sm:text-xl">
-              At AngelAssistCare, every day is unique with the diverse range of activities and lifestyle options we offer. Whether it’s engaging in indoor activities, exploring the outdoors, or going on excursions, we ensure our participants have an enjoyable experience. We design personalized and group schedules tailored to their preferences.
-            </p>
-            <ul className="mt-4 text-lg sm:text-xl list-disc list-inside">
-              <li>Arts and Crafts</li>
-              <li>Cooking/Baking</li>
-              <li>Gardening</li>
-              <li>Entertainment</li>
-              <li>Indoor and Outdoor Games</li>
-              <li>Tours/Travel</li>
-            </ul>
-          </div>
-        </motion.div>
+        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start md:flex-col-reverse" ref={LifeStyleRef}>
+  <motion.img
+    initial={{ x: isMobile ? 0 : -50, opacity: 0 }}
+    animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : -50, opacity: 0 }}
+    transition={{ duration: 1.2, ease: easeInOut }}
+    className="rounded-3xl w-full sm:w-[40rem] h-[20rem] sm:h-[25rem] object-cover mb-8 sm:mb-0 sm:mr-8 md:mt-4 order-1 sm:order-2"
+    src={assets.img_26}
+    alt="network error"
+  />
+  <div className="flex-col order-2 sm:order-3">
+    <motion.h1
+      initial={{ x: isMobile ? 0 : 50, opacity: 0 }}
+      animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : 50, opacity: 0 }}
+      transition={{ duration: 1.2, ease: easeInOut }}
+      className="text-3xl lg:text-5xl md:text-4xl font-bold mb-4 order-1 sm:order-1"
+    >
+      LifeStyle
+    </motion.h1>
+    <p className="mt-4 text-lg lg:text-xl md:text-lg">
+      At AngelAssistCare, every day is unique with the diverse range of activities and lifestyle options we offer. Whether it’s engaging in indoor activities, exploring the outdoors, or going on excursions, we ensure our participants have an enjoyable experience. We design personalized and group schedules tailored to their preferences.
+    </p>
+    <ul className="mt-4 text-lg lg:text-xl md:text-lg list-disc list-inside">
+      <li>Arts and Crafts</li>
+      <li>Cooking/Baking</li>
+      <li>Gardening</li>
+      <li>Entertainment</li>
+      <li>Indoor and Outdoor Games</li>
+      <li>Tours/Travel</li>
+    </ul>
+  </div>
+</motion.div>
       </div>
     </div>
   );
 };
 
 export default Services;
+
