@@ -136,7 +136,7 @@ const NavEnd = () => {
         <div className="right mt-10 sm:mt-[5rem] flex flex-col gap-3 sm:ml-[4rem] justify-center items-center sm:items-start">
           <div className='text-lg font-medium tracking-widest'>STAY UPDATED!</div>
           <div className='text-4xl font-medium text-center sm:text-left'>SUBSCRIBE TO US</div>
-          <div className='leading-7 w-full sm:w-[35rem] text-center sm:text-left'>Make sure you stay updated with all our programs, events and services. Enter your email address to subscribe to us.</div>
+          <div className='leading-7 w-full sm:w-[35rem] text-center sm:text-left px-5'>Make sure you stay updated with all our programs, events and services. Enter your email address to subscribe to us.</div>
           <form onSubmit={handleSubmit(onSubmit)} className='w-full sm:w-auto'>
             {errors.Email?.type === "required" && (
               <li className="text-[#f93232] font-[450]">Please fill the email Address</li>
