@@ -141,7 +141,7 @@ const NavEnd = () => {
             {errors.Email?.type === "required" && (
               <li className="text-[#f93232] font-[450]">Please fill the email Address</li>
             )}
-            <div className='mb-4'>
+            <div className='mb-4 px-5'>
               <input className='rounded focus:outline-none focus:ring-0 w-full' placeholder='Email Address' type="email" {...register("Email", { required: true })} />
               <p className='w-full h-[1px] bg-[#DCDCDB] mt-5'></p>
             </div>

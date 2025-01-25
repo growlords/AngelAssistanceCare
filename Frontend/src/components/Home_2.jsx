@@ -52,7 +52,7 @@ const Home_2 = () => {
         height: '100%',  // Ensures the div takes up the full viewport height
       }}
     >
-      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row '>
+      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row py-[5rem]'>
         <div className="left flex-1 flex justify-center sm:justify-start md:justify-center lg:justify-start">
           <div className="img md:mt-[5rem]">
             <motion.img
@@ -74,7 +74,7 @@ const Home_2 = () => {
           </div>
         </div>
 
-        <div className="right flex-1 relative sm:left-18 sm:top-10 w-full sm:w-auto">
+        <div className="right flex-1 relative sm:left-18 sm:top-10 w-full sm:w-auto px-5">
           <div className="line_1">
             <h5 className='font-semibold text-xl pb-2'>AngelAssistCare</h5>
           </div>
