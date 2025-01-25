@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { easeInOut } from "framer-motion";
 import React, { useState, useEffect } from 'react';
+import backgroundImage from '../assets/Untitled design.png'
+
+
 
 const Services = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -85,7 +88,16 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div 
+      className="min-h-screen bg-white" 
+      style={{
+        backgroundImage: `url(${backgroundImage})`, // Updated background image
+        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+        backgroundPosition: 'center',  // Centers the image
+        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+          // Ensures the div takes up the full viewport height
+      }}
+    >
       {/* Hero Section */}
       <div className="relative h-[55vh] w-full">
         <div
@@ -229,7 +241,7 @@ const Services = () => {
           </div>
         </motion.div>
 
-        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start md:flex-col-reverse" ref={LifeStyleRef}>
+        <motion.div className="flex flex-col sm:flex-row items-center sm:items-start md:flex-col-reverse lg:flex-row" ref={LifeStyleRef}>
   <motion.img
     initial={{ x: isMobile ? 0 : -50, opacity: 0 }}
     animate={LifeStyleinView ? { x: 0, opacity: 1 } : { x: isMobile ? 0 : -50, opacity: 0 }}

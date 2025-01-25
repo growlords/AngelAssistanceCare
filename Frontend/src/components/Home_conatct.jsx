@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { MdArrowForward } from "react-icons/md";
 import { easeInOut, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import backgroundImage from '../assets/Untitled design.png';
 
 const Home_contact = () => {
   const [cardHeight, setCardHeight] = useState('auto');
@@ -63,6 +64,16 @@ const Home_contact = () => {
   });
 
   return (
+    <div  style={{
+      backgroundImage: `url(${backgroundImage})`, // Set the background image
+      backgroundSize: 'cover', // Ensure the image covers the entire container
+      backgroundPosition: 'center', // Center the image
+      backgroundRepeat: 'no-repeat', // Prevent image repetition
+      minHeight: '100vh', // Ensure the container spans the entire viewport
+    }}>
+    <div
+    className="flex flex-col lg:flex-row pt-[4rem] px-4 sm:px-0"
+  >
     <div className='flex flex-col lg:flex-row  mt-36 px-4 sm:px-0'>
       <div className='left w-full lg:w-[45rem] md:w-[30rem]  sm:ml-36'>
         <motion.div ref={ref} className='text-4xl md: font-medium text-center sm:text-left'
@@ -85,7 +96,7 @@ const Home_contact = () => {
           </div>
         </div>
       </div>
-      <div className='right w-full sm:w-auto'>
+      <div className='right w-full sm:w-auto lg:pl-[4rem]'>
         <motion.div ref={Ref}
           className="card mt-5 w-full sm:w-[22rem] mx-auto"
           initial={{ y: "18rem", opacity: 0 }}
@@ -155,6 +166,8 @@ const Home_contact = () => {
           </form>
         </motion.div>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

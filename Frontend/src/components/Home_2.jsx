@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';  
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+import backgroundImage from '../assets/home2.png';// Import the background image
+
 
 const Home_2 = () => {
 
@@ -39,8 +41,18 @@ const Home_2 = () => {
   ]
 
   return (
-    <div className='px-4 sm:px-0 md:mb-0 mt-[5rem] '>
-      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row'>
+    <div 
+      className='0' 
+      style={{
+        backgroundImage: `linear-gradient(to bottom, #dde5f0, rgb(255, 255, 255)), url(${backgroundImage})`, // Add gradient effect on background image
+        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+        backgroundPosition: 'center',  // Centers the image
+        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+        width: '100%',
+        height: '100%',  // Ensures the div takes up the full viewport height
+      }}
+    >
+      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row '>
         <div className="left flex-1 flex justify-center sm:justify-start md:justify-center lg:justify-start">
           <div className="img md:mt-[5rem]">
             <motion.img

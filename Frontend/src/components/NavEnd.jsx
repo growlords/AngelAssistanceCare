@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { motion } from 'framer-motion';
 import { MdArrowForward } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
+import backgroundImage from '../assets/home2.png' ;
 
 const NavEnd = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
@@ -59,14 +60,23 @@ const NavEnd = () => {
   };
 
   return (
-    <div className='mt-[14rem] px-4 sm:px-0'>
-      <div className="top">
+
+    <div className='sm:px-0 '   style={{
+      backgroundImage: ` linear-gradient(to bottom, #dde5f0, rgb(255, 255, 255)),url(${backgroundImage})`, // Add gradient effect on background image
+      backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+      backgroundPosition: 'center',  // Centers the image
+      backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+      width: '100%',
+      height: '100%',  // Ensures the div takes up the full viewport height
+    }}>
+       <div className='pt-[5rem]' >
+      <div className="top ">
         <div className='flex flex-col items-center gap-4 mb-5'>
           <div className="img"><img className='w-[8rem] h-[8rem]' src={assets.favicon} alt="network error" /></div>
           <div className='text-4xl sm:text-6xl font-semibold'>Contact Details</div>
         </div>
 
-        <div className='flex flex-col sm:flex-row items-center justify-between mt-24 gap-10 sm:gap-0'>
+        <div className='flex flex-col sm:flex-row items-center justify-between mt-24 gap-10 sm:gap-0 px-[1] px-[4rem]'>
           <div className='gap-4 flex flex-col items-center'>
             <div className=''><img className='w-[2rem] h-[2rem]' src={assets.addressIcon} alt="Network Error" /></div>
             <div className='font-semibold text-xl'>Address</div>
@@ -164,6 +174,7 @@ const NavEnd = () => {
           <p>Website by Sahil | Raman | +91 9034136066 | +91 8505002058</p>
         </div>
       </div>
+    </div>
     </div>
   )
 }

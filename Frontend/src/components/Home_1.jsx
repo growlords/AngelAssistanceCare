@@ -2,16 +2,30 @@ import React from 'react'
 import { BsSearch } from "react-icons/bs";
 import { assets } from '../assets/assets';
 import { easeInOut, motion } from "framer-motion";
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import backgroundImage from '../assets/Untitled design.png'
+ // Import the next background image
 
 const Home_1 = () => {
   return (
+    <div 
+      className="divM w-full h-screen flex flex-col sm:flex-row" 
+      style={{
+        margin: '0',
+        padding: '0',
+        backgroundImage: `url(${backgroundImage})`, // Set the background image without gradient
+        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+        backgroundPosition: 'center',  // Centers the image
+        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+        width: '100%',
+        height: '100%',  // Ensures the div takes up the full viewport height
+      }}
+    >
     <div className='divM w-full h-screen flex flex-col lg:flex-row lg:mt-[6rem]' >
       <div className="divL flex-1 flex flex-col items-center md:items-start sm:px-10">
         <div className="mt-[6rem] px-4 sm:px-0 leading-[4vw] flex flex-col items-center sm:items-start">
           <div>
-            <h1 className='uppercase text-[6vw] sm:text-[2vw] md:text-[4vw] lg:text-[1.6vw] tracking-tight sm:leading-none md:leading-tight leading-8 font-semibold'>Welcome to Angel Assist Care</h1>
+            <h1 className='uppercase text-[6vw] sm:text-[2vw] md:text-[4vw] lg:text-[1.6vw] tracking-tight sm:leading-none md:leading-tight leading-8 font-semibold'>Welcome to Angel Assistance Care</h1>
           </div>
 
           <div className='flex items-center mt-4 sm:mt-0'>
@@ -68,6 +82,7 @@ const Home_1 = () => {
           />
         </motion.div>
       </div>
+    </div>
     </div>
   )
 }

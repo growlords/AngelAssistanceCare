@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-    <div className="flex-grow px-3 sm:px-[2vw] md:px-[4vw] lg:px-[5vw]">
+    <div className="flex-grow ">
   <Navbar />
    {/* <AccessibilityTools /> */}
    <ScrollToTop/>

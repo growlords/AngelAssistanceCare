@@ -6,6 +6,7 @@ import CountUp from 'react-countup';
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
 import { easeInOut } from 'framer-motion';
+import backgroundImage from '../assets/home2.png'
 
 const About = () => {
 
@@ -46,6 +47,17 @@ const About = () => {
   const isMobile = window.innerWidth <= 768;
 
   return (
+    <div 
+      className='0' 
+      style={{
+        backgroundImage: `linear-gradient(to top, #dde5f0, rgb(255, 255, 255)), url(${backgroundImage})`, // Add gradient effect on background image
+        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+        backgroundPosition: 'center',  // Centers the image
+        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+        width: '100%',
+        height: '100%',  // Ensures the div takes up the full viewport height
+      }}
+    >
     <div>
       <div className="relative h-[55vh] w-full">
         <div
@@ -100,7 +112,7 @@ const About = () => {
            transition={{ duration: 1.2 }}
           className='h-[20rem] sm:h-[30rem] w-full sm:w-[50rem]' src={assets.img_20} alt="" />
         </div>
-        <div className='flex flex-col justify-center text-center p-4 sm:p-[4rem] gap-5 bg-slate-500 mx-4 sm:mx-[6rem] rounded-xl relative top-[-5rem]'>
+        <div className='flex flex-col justify-center text-center p-4 sm:p-[4rem] gap-5 bg-slate-400 mx-4 sm:mx-[6rem] rounded-xl relative top-[-3rem]'>
           <h1 className='text-2xl sm:text-4xl font-bold tracking-wider'>And our VALUES define us:</h1>
           <ul className='flex flex-col gap-5 text-lg'>
             <li>A - Accountability: Ensuring the well-being and support of individuals with compassion and responsibility.</li>
@@ -117,10 +129,10 @@ const About = () => {
         </div>
       </div>
 
-      <div className='flex flex-col sm:flex-row gap-5 px-4 sm:px-0'>
+      <div className='flex flex-col sm:flex-row gap-5 px-4 sm:px-0 px-[5rem]'>
       <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref1}
-        initial={{ x: isMobile ? -20 : -120, opacity: 0 }}
-        animate={InView1 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : -120, opacity: 0 }}
+        initial={{ x: isMobile ? -20 : 0, opacity: 0 }}
+        animate={InView1 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : 0, opacity: 0 }}
         transition={{ duration: 1.2, ease: easeInOut }}
       >
         <div> <img className='w-[5rem] h-[3.5rem]' src={assets.img_22} alt="" /></div>
@@ -143,8 +155,8 @@ const About = () => {
       </motion.div>
 
       <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref3}
-        initial={{ x: isMobile ? -20 : 120, opacity: 0 }}
-        animate={InView3 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : 120, opacity: 0 }}
+        initial={{ x: isMobile ? -20 : 0, opacity: 0 }}
+        animate={InView3 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : 0, opacity: 0 }}
         transition={{ duration: 1.2, ease: easeInOut }}
       >
         <div> <img className='w-[5rem] h-[3.5rem]' src={assets.img_23} alt="" /></div>
@@ -200,6 +212,7 @@ const About = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

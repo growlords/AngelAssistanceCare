@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { assets } from '../assets/assets';
 import { MdArrowForward } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import backgroundImage from '../assets/home2.png' // Import the background image
 
 const Home_3 = () => {
   const cards = [
@@ -25,7 +26,17 @@ const Home_3 = () => {
   ];
 
   return (
-    <div className='mt-40 px-4 sm:px-0'>
+    <div 
+      className='mt-40 px-4 sm:px-0'
+      style={{
+        backgroundImage: `linear-gradient(to top, #dde5f0, rgb(255, 255, 255)),url(${backgroundImage})`, // Set the background image
+        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+        backgroundPosition: 'center',  // Centers the image
+        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+        width: '100%',
+        height: '100%',  // Ensures the div takes up the full viewport height
+      }}
+    >
       <div className="heading flex w-full justify-center">
         <div className='w-full flex flex-col items-center'>
           <div className='text-5xl font-semibold mb-5 text-center'>Featured Services</div>
