@@ -104,7 +104,7 @@ const NavEnd = () => {
         >
           <ul className='flex gap-[1.2rem] text-2xl'>
             <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><FiFacebook /></a></li>
-            <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.instagram.com/ramaz_hehe/profilecard/?igsh=anFldTM0YWRiOHYz" target="_blank" rel="noopener noreferrer"><FaInstagram /></a></li>
+            <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.instagram.com/rizzz.raman?igsh=MWZhanNtczFsbG4y&utm_source=qr" target="_blank" rel="noopener noreferrer"><FaInstagram /></a></li>
             <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.youtube.com/watch?v=Kd57YHWqrsI&list=RDB0f4xyZSfvU&index=27" target="_blank" rel="noopener noreferrer"><FiYoutube /></a></li>
           </ul>
         </motion.div>
