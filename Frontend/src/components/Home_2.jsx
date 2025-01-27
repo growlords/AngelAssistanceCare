@@ -52,7 +52,7 @@ const Home_2 = () => {
         height: '100%',  // Ensures the div takes up the full viewport height
       }}
     >
-      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row py-[20rem] lg:py-0'>
+      <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row py-[7rem] lg:py-0'>
         <div className="left flex-1 flex justify-center sm:justify-start md:justify-center lg:justify-start">
           <div className="img md:mt-[5rem]">
             <motion.img
