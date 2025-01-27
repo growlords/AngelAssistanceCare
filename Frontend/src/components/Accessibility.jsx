@@ -65,7 +65,7 @@ const AccessibilityTools = () => {
   }, [fontSize, isGrayscale, isHighContrast, isNegativeContrast, isLightBackground, underlineLinks]);
 
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+    <div className="fixed right-4 top-1/4 transform -translate-y-1/2 z-50">
       {/* Main Accessibility Icon Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
