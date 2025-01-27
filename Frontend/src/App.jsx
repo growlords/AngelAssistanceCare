@@ -19,7 +19,7 @@ function App() {
     <div>
     <div className="flex-grow ">
   <Navbar />
-   <AccessibilityTools />
+   {/* <AccessibilityTools /> */}
    <ScrollToTop/>
   
   <div className=" w-full">
