@@ -128,7 +128,7 @@ const Home_contact = () => {
             </div>
             <div className='flex flex-col sm:flex-row mb-4 gap-4'>
               <div className='w-full'>
-                <input className='rounded focus:outline-none focus:ring-0 w-full' placeholder="Name" type="text" {...register("username", { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/ })} />
+                <input className='rounded focus:outline-none focus:ring-0 w-full' placeholder="Name" type="text" {...register("username", { required: true, maxLength: 20, pattern: /^[A-Za-z\s]+$/ })} />
                 <p className='w-full h-[1px] bg-[#dcdbdb] mt-5'></p>
               </div>
               <div className='w-full'>

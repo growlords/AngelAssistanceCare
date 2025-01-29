@@ -119,7 +119,7 @@ const JoinUs = () => {
                   {...register("username", {
                     required: true,
                     maxLength: 20,
-                    pattern: /^[A-Za-z]+$/,
+                    pattern: /^[A-Za-z\s]+$/,
                   })}
                 />
                 {errors.username?.type === "required" && (
@@ -142,7 +142,7 @@ const JoinUs = () => {
                   {...register("LastName", {
                     required: true,
                     maxLength: 20,
-                    pattern: /^[A-Za-z]+$/,
+                    pattern: /^[A-Za-z\s]+$/,
                   })}
                 />
                 {errors.LastName?.type === "required" && (
@@ -162,7 +162,7 @@ const JoinUs = () => {
                 <input
                   className="rounded focus:outline-none focus:ring-0 w-full bg-slate-200 p-2"
                   type="text"
-                  {...register("Location", { required: true, maxLength: 20 })}
+                  {...register("Location", { required: true, maxLength: 20,pattern: /^[A-Za-z\s]+$/, })}
                 />
                 {errors.Location?.type === "required" && (
                   <p className="text-[#f93232] font-[450] bg-red-50 mt-2">
