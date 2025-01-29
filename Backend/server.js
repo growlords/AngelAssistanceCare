@@ -48,7 +48,8 @@ app.post('/api/send-mail', upload.single('file'), async (req, res) => {
   try {
     const { username, LastName, Location, Email, Phone_Number } = req.body;
 
-    if (!file) {
+    // Check if file is uploaded
+    if (!req.file) {
       return res.status(400).send('File upload failed!');
     }
 
@@ -66,8 +67,8 @@ app.post('/api/send-mail', upload.single('file'), async (req, res) => {
       `,
       attachments: [
         {
-          filename: file.originalname,
-          path: file.path,
+          filename: req.file.originalname,
+          path: req.file.path,
         },
       ],
     };

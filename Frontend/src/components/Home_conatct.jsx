@@ -29,7 +29,7 @@ const Home_contact = () => {
     await delay(1.5);
 
     try {
-      const response = await fetch("http://localhost:3000/api/contact", { // Adjust to match your backend route
+      const response = await fetch("https://project-1-cz3t.onrender.com/api/contact", { // Adjust to match your backend route
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
