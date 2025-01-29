@@ -53,7 +53,14 @@ const NavEnd = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
+      const contentType = response.headers.get("content-type");
+      let result;
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        result = await response.json();
+      } else {
+        result = await response.text();
+      }
+
       console.log("Form Data:", data);
       console.log("Response:", result);
 
