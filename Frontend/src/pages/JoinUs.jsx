@@ -39,7 +39,7 @@ const JoinUs = () => {
       formData.append("Phone_Number", data.Phone_Number);
       formData.append("file", data.file[0]); // File input is an array, use the first element
 
-      const response = await fetch("http://localhost:3000/api/send-mail", {
+      const response = await fetch("https://project-1-cz3t.onrender.com/api/send-mail", {
         method: "POST",
         body: formData, // Send FormData directly
       });
