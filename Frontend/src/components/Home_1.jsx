@@ -48,7 +48,7 @@ const Home_1 = () => {
         </div>
 
         <div className='mt-5 px-4 sm:px-0'>
-          <p className="quote w-full sm:w-[50vw] mt-3 text-base md:text-[1.2rem] lg:text-[1rem]">Angel Assist Care is here to remind you that every journey is unique. With compassion, support, and care, we help transform challenges into triumphs for those who need it most.</p>
+          <p className="quote w-full sm:w-[50vw] mt-3 text-base md:text-[1.2rem] lg:text-[1rem]">Angel Assistance Care is here to remind you that every journey is unique. With compassion, support, and care, we help transform challenges into triumphs for those who need it most.</p>
         </div>
 
         <div className="buttons flex items-center mt-6 px-4 sm:px-0">

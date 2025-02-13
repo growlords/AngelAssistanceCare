@@ -260,7 +260,7 @@ const Services = () => {
       LifeStyle
     </motion.h1>
     <p className="mt-4 text-lg lg:text-xl md:text-lg">
-      At AngelAssistCare, every day is unique with the diverse range of activities and lifestyle options we offer. Whether it’s engaging in indoor activities, exploring the outdoors, or going on excursions, we ensure our participants have an enjoyable experience. We design personalized and group schedules tailored to their preferences.
+      At Angel Assistance Care, every day is unique with the diverse range of activities and lifestyle options we offer. Whether it’s engaging in indoor activities, exploring the outdoors, or going on excursions, we ensure our participants have an enjoyable experience. We design personalized and group schedules tailored to their preferences.
     </p>
     <ul className="mt-4 text-lg lg:text-xl md:text-lg list-disc list-inside">
       <li>Arts and Crafts</li>
