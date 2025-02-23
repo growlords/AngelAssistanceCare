@@ -5,6 +5,8 @@ import { MdArrowForward } from "react-icons/md";
 import { easeInOut, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import backgroundImage from '../assets/Untitled design.png';
+import { Link } from 'react-router-dom';
+
 
 const Home_contact = () => {
   const [cardHeight, setCardHeight] = useState('auto');
@@ -93,6 +95,24 @@ const Home_contact = () => {
           <div className="flex flex-col justify-center ml-10">
             <div className="text-lg font-semibold">Contact us today!</div>
             <div className="text-sm">Stay connected, because every great story begins with a conversation!</div>
+
+
+
+
+<div className="buttons flex items-center mt-6 px-4 sm:px-0">
+          <div className="button">
+            <motion.button className="relative text-xl px-9 py-5 bg-[#171756] text-white rounded-full overflow-hidden group "
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+              <Link to='/JoinUs'><span className="z-10 relative">Be One Of Us</span></Link>
+              <span className="absolute inset-0 bg-gradient-to-r from-[#010166] via-[#010166] to-[#cc9832] group-hover:w-full w-0 transition-all duration-700 ease-in-out"></span>
+            </motion.button>
+          </div>
+        </div>
+
+
+
           </div>
         </div>
       </div>

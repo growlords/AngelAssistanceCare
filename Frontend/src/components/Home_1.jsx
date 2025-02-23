@@ -2,7 +2,6 @@ import React from 'react'
 import { BsSearch } from "react-icons/bs";
 import { assets } from '../assets/assets';
 import { easeInOut, motion } from "framer-motion";
-import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/Untitled design.png'
  // Import the next background image
 
@@ -51,17 +50,7 @@ const Home_1 = () => {
           <p className="quote w-full sm:w-[50vw] mt-3 text-base md:text-[1.2rem] lg:text-[1rem]">Angel Assistance Care is here to remind you that every journey is unique. With compassion, support, and care, we help transform challenges into triumphs for those who need it most.</p>
         </div>
 
-        <div className="buttons flex items-center mt-6 px-4 sm:px-0">
-          <div className="button">
-            <motion.button className="relative text-xl px-9 py-5 bg-[#171756] text-white rounded-full overflow-hidden group "
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-              <Link to='/JoinUs'><span className="z-10 relative">Be One Of Us</span></Link>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#010166] via-[#010166] to-[#cc9832] group-hover:w-full w-0 transition-all duration-700 ease-in-out"></span>
-            </motion.button>
-          </div>
-        </div>
+        
       </div>
       <div className="divR flex-1 relative top-16 rounded-full flex justify-center sm:justify-end md:justify-center ">
         <motion.div className="imgB w-[275px] h-[275px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] object-cover rounded-full overflow-hidden flex justify-center items-center"

@@ -125,7 +125,7 @@ const NavEnd = () => {
           animate={ComeInView ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
           transition={{ ease: "easeInOut", duration: 1.5 }}
         >
-          AngelAssistance Care honors the traditional custodians of the land we reside on and work within, and we extend our deepest respect to the elders, both past and present.
+          Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
         </motion.div>
       </div>
 

@@ -76,7 +76,7 @@ const Home_2 = () => {
 
         <div className="right flex-1 relative sm:left-18 sm:top-10 w-full sm:w-auto px-5">
           <div className="line_1">
-            <h5 className='font-semibold text-xl pb-2'>AngelAssistanceCare</h5>
+            <h5 className='font-semibold text-xl pb-2'>Angel Assistance Care</h5>
           </div>
           <div className='uppercase text-[6vw] sm:text-[3vw] tracking-tight font-semibold pb-1 leading-snug'>Transforming challenges into triumphs.</div>
           <div className='text-lg sm:text-xl font-medium pb-2'>
