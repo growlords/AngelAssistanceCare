@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { easeInOut } from "framer-motion";
 import React, { useState, useEffect } from 'react';
-import backgroundImage from '../assets/Untitled design.png'
+import backgroundImage from '../assets/home2.png'
 
 
 
@@ -91,11 +91,14 @@ const Services = () => {
     <div 
       className="min-h-screen bg-white" 
       style={{
-        backgroundImage: `url(${backgroundImage})`, // Updated background image
-        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
-        backgroundPosition: 'center',  // Centers the image
-        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
-          // Ensures the div takes up the full viewport height
+  
+         backgroundImage: `linear-gradient(to top, #8fbdd3, rgb(255, 255, 255)),url(${backgroundImage})`, // Set the background image
+         backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
+         backgroundPosition: 'center',  // Centers the image
+         backgroundRepeat: 'no-repeat',  // Prevents image from repeating
+         width: '100%',
+         height: '100%',  // Ensures the div takes up the full viewport height
+       
       }}
     >
       {/* Hero Section */}

@@ -62,7 +62,7 @@ const NavEnd = () => {
   return (
 
     <div className='sm:px-0 '   style={{
-      backgroundImage: ` linear-gradient(to bottom, #dde5f0, rgb(255, 255, 255)),url(${backgroundImage})`, // Add gradient effect on background image
+      backgroundImage: ` linear-gradient(to bottom, #8fbdd3, rgb(255, 255, 255)),url(${backgroundImage})`, // Add gradient effect on background image
       backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
       backgroundPosition: 'center',  // Centers the image
       backgroundRepeat: 'no-repeat',  // Prevents image from repeating

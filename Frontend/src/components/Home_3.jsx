@@ -29,7 +29,7 @@ const Home_3 = () => {
     <div 
       className='mt-40 px-4 sm:px-0'
       style={{
-        backgroundImage: `linear-gradient(to top, #dde5f0, rgb(255, 255, 255)),url(${backgroundImage})`, // Set the background image
+        backgroundImage: `linear-gradient(to top, #8fbdd3, rgb(255, 255, 255)),url(${backgroundImage})`, // Set the background image
         backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
         backgroundPosition: 'center',  // Centers the image
         backgroundRepeat: 'no-repeat',  // Prevents image from repeating

@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';  
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
-import backgroundImage from '../assets/home2.png';// Import the background image
+import backgroundImage from '../assets/home2.png';// Import the background imageC:\Users\hp\project\project\Frontend\src\assets\home2.png
 
 
 const Home_2 = () => {
@@ -44,7 +44,7 @@ const Home_2 = () => {
     <div 
       className='0' 
       style={{
-        backgroundImage: `linear-gradient(to bottom, #dde5f0, rgb(255, 255, 255)), url(${backgroundImage})`, // Add gradient effect on background image
+        backgroundImage: `linear-gradient(to bottom, #8fbdd3, rgb(255, 255, 255)), url(${backgroundImage})`, // Add gradient effect on background image
         backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
         backgroundPosition: 'center',  // Centers the image
         backgroundRepeat: 'no-repeat',  // Prevents image from repeating
