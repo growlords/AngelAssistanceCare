@@ -58,6 +58,7 @@ import img_38 from './img_38.jpg'
 import img_39 from './img_39.jpg'
 import img_40 from './img_40.jpg'
 import img_41 from './img_41.jpg'
+import ndis from './ndis.png'
 
 export const assets = {
     favicon,
@@ -105,5 +106,6 @@ export const assets = {
     img_bg_3,
     jpeg,
     menu_icon,
-    img_27,img_28,img_29,img_30,img_31,img_32,img_33,img_34,img_35,img_36,img_37,img_38,img_39,img_40,img_41
+    img_27,img_28,img_29,img_30,img_31,img_32,img_33,img_34,img_35,img_36,img_37,img_38,img_39,img_40,img_41,
+    ndis,
 }

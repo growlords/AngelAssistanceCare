@@ -70,6 +70,18 @@ const Home_1 = () => {
             alt="Image"
           />
         </motion.div>
+        <motion.div 
+          className='absolute top-[12rem] right-[4.5rem] sm:top-[18rem] sm:right-[3rem] md:top-[17rem] md:right-[10rem] lg:top-[21rem] lg:right-[4.5rem]'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.3 }}
+        >
+          <img 
+            className='w-[6rem] h-[6rem] sm:w-[8rem] sm:h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[12rem] lg:h-[12rem]' 
+            src={assets.ndis} 
+            alt="not found" 
+          />
+        </motion.div>
       </div>
     </div>
     </div>
