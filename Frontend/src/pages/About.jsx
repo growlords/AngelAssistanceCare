@@ -186,19 +186,26 @@ const About = () => {
           </motion.div>
         </div> */}
 
-        <div className="mt-[10rem] flex flex-col sm:flex-row justify-center px-4 sm:px-0">
-          <div className="h-[20rem] sm:h-[30rem] w-full sm:w-[40rem] overflow-hidden">
-            <img className="object-contain w-full h-full" src={assets.img_24} alt="" />
-          </div>
+<div className="mt-[10rem] flex flex-col sm:flex-row justify-center px-4 sm:px-0">
+  <div className="h-[20rem] sm:h-[30rem] w-full sm:w-[40rem] overflow-hidden mb-7">
+    <img
+      className="object-cover w-full h-full rounded-xl"
+      src={assets.img_46}
+      alt=""
+    />
+  </div>
 
-          <div className="flex flex-col max-w-full sm:max-w-[30rem] gap-5 mt-8 sm:mt-0 sm:ml-8">
-            <h1 className="font-medium text-lg">Why Choose Us</h1>
-            <p className="text-2xl sm:text-4xl font-bold">Partnering with Esteemed Organizations in Disability Care</p>
-            <p className="tracking-wider leading-8 text-lg">
-              Choose us for personalized, compassionate care tailored to individual needs in your own environment. Our experienced team is dedicated to empowering individuals with disabilities, fostering independence, and enhancing quality of life through innovative support services.
-            </p>
-          </div>
-        </div>
+  <div className="flex flex-col max-w-full sm:max-w-[30rem] gap-5 mt-8 sm:mt-0 sm:ml-8">
+    <h1 className="font-medium text-lg">Why Choose Us</h1>
+    <p className="text-2xl sm:text-4xl font-bold">
+      Partnering with Esteemed Organizations in Disability Care
+    </p>
+    <p className="tracking-wider leading-8 text-lg">
+      Choose us for personalized, compassionate care tailored to individual needs in your own environment. Our experienced team is dedicated to empowering individuals with disabilities, fostering independence, and enhancing quality of life through innovative support services.
+    </p>
+  </div>
+</div>
+
 
         {/* <div className='bg-slate-500 flex justify-center '>
           <div className='flex flex-col sm:flex-row flex-wrap gap-12 p-4 sm:p-[5rem] md:justify-center '>
