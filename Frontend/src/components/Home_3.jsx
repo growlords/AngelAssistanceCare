@@ -43,7 +43,7 @@ const Home_3 = () => {
           <div className='text-lg max-w-[90%] sm:max-w-[45rem] text-center'>We are committed to delivering exceptional services tailored to meet each participant’s unique needs.</div>
         </div>
       </div>
-      <div className="cards flex flex-wrap justify-center mt-16 gap-5">
+      {/* <div className="cards flex flex-wrap justify-center mt-16 gap-5">
         {cards.map((item, index) => {
           const { ref, inView } = useInView({
             triggerOnce: true,
@@ -86,7 +86,7 @@ const Home_3 = () => {
             </motion.div>
           );
         })}
-      </div>
+      </div> */}
       <div className="OtherServices m-auto flex flex-col items-center text-center mt-28 transition-transform duration-500 ease-in-out hover:-translate-y-1">
         <div className="text-2xl font-medium mb-4 inline-block">Other Services</div>
         <div className="inline-block">
