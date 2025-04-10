@@ -42,6 +42,8 @@ import img_24 from './img_24.png'
 import img_25 from './img_25.png'
 import img_26 from './img_26.png'
 import img_bg_3 from './img_bg_3.png'
+import img_bg_5 from './img_bg_5.png'
+import img_bg_6 from './img_bg_6.png'
 import jpeg from './jpeg.jpg'
 import menu_icon from './menu_icon.png'
 import img_27 from './img_27.jpg'
@@ -110,8 +112,9 @@ export const assets = {
     img_26,
     img_bg_3,
     img_bg_4,
+    img_bg_5,
     jpeg,
     menu_icon,
-    img_27,img_28,img_29,img_30,img_31,img_32,img_33,img_34,img_35,img_36,img_37,img_38,img_39,img_40,img_41,img_42,img_43,img_44,img_45,
+    img_27,img_28,img_29,img_30,img_31,img_32,img_33,img_34,img_35,img_36,img_37,img_38,img_39,img_40,img_41,img_42,img_43,img_44,img_45,img_bg_6,
     ndis,
 }

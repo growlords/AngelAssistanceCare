@@ -79,7 +79,8 @@ const JoinUs = () => {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(${assets.img_bg_2})`,
+              backgroundImage: `url(${assets.img_bg_5})`,
+              backgroundPosition: 'center 20%',
               opacity: 0.8,
             }}
             role="img"

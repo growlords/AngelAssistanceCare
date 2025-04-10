@@ -64,13 +64,11 @@ const Enquiries = () => {
       <div>
         <div className="relative h-[55vh] w-full">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-no-repeat"
             style={{
-              backgroundImage: `url(${assets.jpeg})`,
+              backgroundImage: `url(${assets.img_bg_6})`,
               opacity: 0.6,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center ',
+              backgroundPosition: 'center 30%',
               width: '100%'
             }}
             role="img"
