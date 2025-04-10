@@ -10,17 +10,17 @@ const Home_3 = () => {
   const cards = [
     {
       img: assets.Card_icon_3,
-      heading: "Group and Centre-Based Activities",
+      heading: "Supported Independent Living (SIL)",
       para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
     },
     {
       img: assets.Card_icon_2,
-      heading: "Group and Centre-Based Activities",
+      heading: "Short Term Accommodation or Respite (STA)",
       para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
     },
     {
       img: assets.Card_icon_1,
-      heading: "Group and Centre-Based Activities",
+      heading: "Medium Term Accommodation (MTA)",
       para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
     }
   ];
@@ -76,8 +76,8 @@ const Home_3 = () => {
                 transformOrigin: "left center",
               }}
             >
-              <img src={item.img} alt={item.heading} className="w-2rem h-14 object-cover ml-9 mt-10" />
-              <div className="heading mt-5 p-3 font-semibold text-2xl">{item.heading}</div>
+              <img src={item.img} alt={item.heading} className="w-2rem h-14 object-cover ml-9 mt-10 filter invert" />
+              <div className="heading mt-3 tracking-wider p-3 font-semibold text-2xl">{item.heading}</div>
               <p className="p-3 break-words">{item.para}</p>
               <p className='w-8 md:w-[14rem] h-[1.5px] bg-[#414141] ml-8 mt-10'></p>
               <Link to='/Services'>

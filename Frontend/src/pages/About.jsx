@@ -44,6 +44,8 @@ const About = () => {
     threshold: 0.3, // Trigger animation when 30% of the element is visible
   });
 
+  const videoUrl = "";
+
   const isMobile = window.innerWidth <= 768;
 
   return (
@@ -61,9 +63,9 @@ const About = () => {
       <div>
         <div className="relative h-[55vh] w-full">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center  "
             style={{
-              backgroundImage: `url(${assets.img_bg_2})`,
+              backgroundImage: `url(${assets.img_44})`,
               opacity: 0.8
             }}
             role="img"
@@ -90,17 +92,21 @@ const About = () => {
           <div className='flex justify-center cursor-pointer mb-[5rem]'>
             <MdOutlinePlayCircle className='text-[4rem]' onClick={toggleVideo} />
             {isVideoVisssible && (
-              <div className="absolute w-[20rem] sm:w-[30rem] h-[13rem] items-center justify-center">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/RuDsBrSczis?autoplay=1"
-                  title="YouTube video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            )}
+        <div className="absolute w-[20rem] sm:w-[30rem] h-[13rem] flex items-center justify-center bg-black text-white text-center rounded-md p-4">
+          {videoUrl ? (
+            <iframe
+              width="100%"
+              height="100%"
+              src={`${videoUrl}?autoplay=1`}
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <span>Currently Unavailable</span>
+          )}
+        </div>
+      )}
           </div>
         </div>
 
@@ -134,15 +140,15 @@ const About = () => {
               <li>C - Compassion: Providing care with deep empathy and understanding, offering comfort and respect at every stage.
               </li>
               <li>E - Empowerment: Enabling individuals to feel confident, capable, and independent, supporting their personal growth and self-determination.</li>
-              <li>C - Comfort: Creating a safe and supportive environment where individuals feel at ease, valued, and respected, ensuring their well-being with dignity.</li>
-              <li>A - Advocacy: Standing up for the rights and needs of individuals with disabilities, ensuring they have equal opportunities and access to services.</li>
-              <li>R - Respect: Honoring the individuality, autonomy, and choices of every person, fostering an environment of dignity and understanding.</li>
-              <li>E - Empowerment: Enabling individuals to take control of their lives by supporting their independence, growth, and self-confidence.</li>
+              <li>C - Compassionate hearts that truly share</li>
+              <li>A -Assisting hands that show we care</li>
+              <li>R - Reliable support that's always there</li>
+              <li>E - Empowering lives with love and repair</li>
             </ul>
           </div>
         </div>
 
-        <div className='flex flex-col sm:flex-row gap-5 px-4 sm:px-0 px-[5rem]'>
+        {/* <div className='flex flex-col sm:flex-row gap-5 px-4 sm:px-0 px-[5rem]'>
           <motion.div className='flex justify-center items-center gap-5 p-8 rounded-lg bg-slate-400' ref={Ref1}
             initial={{ x: isMobile ? -20 : 0, opacity: 0 }}
             animate={InView1 ? { x: 0, opacity: 1 } : { x: isMobile ? -20 : 0, opacity: 0 }}
@@ -178,7 +184,7 @@ const About = () => {
               <p>Inspiring solutions to improve lives and enhance care.</p>
             </div>
           </motion.div>
-        </div>
+        </div> */}
 
         <div className="mt-[10rem] flex flex-col sm:flex-row justify-center px-4 sm:px-0">
           <div className="h-[20rem] sm:h-[30rem] w-full sm:w-[40rem] overflow-hidden">
@@ -189,12 +195,12 @@ const About = () => {
             <h1 className="font-medium text-lg">Why Choose Us</h1>
             <p className="text-2xl sm:text-4xl font-bold">Partnering with Esteemed Organizations in Disability Care</p>
             <p className="tracking-wider leading-8 text-lg">
-              Choose us for personalized, compassionate care tailored to individual needs. Our experienced team is dedicated to empowering individuals with disabilities, fostering independence, and enhancing quality of life through innovative support services.
+              Choose us for personalized, compassionate care tailored to individual needs in your own environment. Our experienced team is dedicated to empowering individuals with disabilities, fostering independence, and enhancing quality of life through innovative support services.
             </p>
           </div>
         </div>
 
-        <div className='bg-slate-500 flex justify-center '>
+        {/* <div className='bg-slate-500 flex justify-center '>
           <div className='flex flex-col sm:flex-row flex-wrap gap-12 p-4 sm:p-[5rem] md:justify-center '>
             <div ref={ref} className='flex flex-col gap-4 items-center'>
               <p className='text-2xl sm:text-4xl font-bold'>
@@ -224,7 +230,7 @@ const About = () => {
               <p className='text-base sm:text-lg'>Portfolios</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

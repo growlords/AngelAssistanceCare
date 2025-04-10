@@ -54,10 +54,10 @@ const Home_2 = () => {
     >
       <div className='flex flex-col sm:flex-row md:flex-col-reverse  lg:flex-row py-[12rem] lg:py-0'>
         <div className="left flex-1 flex justify-center sm:justify-start md:justify-center lg:justify-start">
-          <div className="img md:mt-[5rem]">
+          <div className="img lg:md:mt-[3rem] sm:mt-[8rem] lg:ml-20 sm:ml-0">
             <motion.img
               ref={ref}
-              className="overflow-hidden object-cover w-full sm:w-auto md:w-[25rem] lg:w-full"
+              className="overflow-hidden object-cover w-[22.5rem] sm:w-auto md:w-[29rem] md:h-[20rem] lg:w-full lg:h-[22rem] sm:h-[15rem] rounded-xl"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{
                 opacity: inView ? 1 : 0, // Fade in when in view
@@ -68,7 +68,7 @@ const Home_2 = () => {
                 delay: 0.5,
                 ease: [0, 0.71, 0.2, 1.01],
               }}
-              src={assets.img_9_2} // Your image source here
+              src={assets.img_43} // Your image source here
               alt="Animated Image"
             />
           </div>
@@ -108,7 +108,7 @@ const Home_2 = () => {
       </div>
 
       <div className='mt-20 sm:mt-[10rem]'>
-        <div className='flex justify-center font-bold text-3xl sm:text-5xl mb-10 sm:mb-[3rem]'>Some Memories</div>
+        {/* <div className='flex justify-center font-bold text-3xl sm:text-5xl mb-10 sm:mb-[3rem]'>Some Memories</div>
         <div className="Images overflow-hidden">
           <Swiper
             effect={'coverflow'}
@@ -153,7 +153,7 @@ const Home_2 = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div> */}
       </div>
     </div>
   )

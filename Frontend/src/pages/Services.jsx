@@ -104,9 +104,10 @@ const Services = () => {
       {/* Hero Section */}
       <div className="relative h-[55vh] w-full">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${assets.img_bg_1})`,
+          className="absolute inset-0 bg-cover bg-center "
+          style={{ 
+            backgroundImage: `url(${assets.img_bg_4})`,
+            backgroundPosition: 'center 15%',
             opacity: 0.8,
           }}
           role="img"

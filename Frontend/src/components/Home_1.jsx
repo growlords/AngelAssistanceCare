@@ -28,7 +28,7 @@ const Home_1 = () => {
           </div>
 
           <div className='flex items-center mt-4 sm:mt-0'>
-            <motion.img
+            {/* <motion.img
               initial={{ width: 0 }}
               animate={{ width: "6rem", height: "3rem" }}
               transition={{
@@ -36,7 +36,7 @@ const Home_1 = () => {
                 duration: 0.6,
                 delay: 2.1
               }}
-              className='w-[6rem] h-[3rem] mt-3 rounded-xl' src={assets.img_2} alt="" />
+              className='w-[6rem] h-[3rem] mt-3 rounded-xl' src={assets.img_2} alt="" /> */}
               <div>
             <h1 className='uppercase text-[8vw] sm:text-[4vw] tracking-tight  leading-8 sm:leading-none font-semibold lg:text-[3rem]'>Empowering Abilities</h1></div>
           </div>
@@ -66,7 +66,7 @@ const Home_1 = () => {
           }}>
           <img
             className="w-full h-full"
-            src={assets.img_1}
+            src={assets.img_42}
             alt="Image"
           />
         </motion.div>
