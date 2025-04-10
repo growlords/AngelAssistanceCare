@@ -110,7 +110,7 @@ const NavEnd = () => {
         </motion.div>
       </div>
 
-      <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
+      {/* <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
         <motion.div className="img"
           ref={Ref}
           initial={{ x: 100, opacity: 0 }}
@@ -127,7 +127,7 @@ const NavEnd = () => {
         >
           Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
         </motion.div>
-      </div>
+      </div> */}
 
       <div className="center_2 mt-14 sm:mt-[15rem] flex flex-col md:flow-col lg:flex-row items-center">
         <div className='left w-full sm:w-auto'>

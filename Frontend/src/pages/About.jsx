@@ -121,7 +121,7 @@ const About = () => {
           <div className='flex flex-col justify-center text-center p-4 sm:p-[4rem] gap-5 bg-slate-400 mx-4 sm:mx-[6rem] rounded-xl relative top-[-3rem]'>
             <h1 className='text-2xl sm:text-4xl font-bold tracking-wider'>And our VALUES define us:</h1>
             <ul className='flex flex-col gap-5 text-lg'>
-              <li>A - Accountability: Ensuring the well-being and support of individuals with compassion and responsibility.</li>
+              {/* <li>A - Accountability: Ensuring the well-being and support of individuals with compassion and responsibility.</li>
               <li>N - Nurturing: Providing care that promotes growth, comfort, and independence for everyone.</li>
               <li>G - Guidance: Offering personalized support and guidance tailored to individual needs.</li>
               <li>E - Empathy: Approaching each individual with understanding and kindness.</li>
@@ -139,7 +139,7 @@ const About = () => {
               </li>
               <li>C - Compassion: Providing care with deep empathy and understanding, offering comfort and respect at every stage.
               </li>
-              <li>E - Empowerment: Enabling individuals to feel confident, capable, and independent, supporting their personal growth and self-determination.</li>
+              <li>E - Empowerment: Enabling individuals to feel confident, capable, and independent, supporting their personal growth and self-determination.</li> */}
               <li>C - Compassionate hearts that truly share</li>
               <li>A -Assisting hands that show we care</li>
               <li>R - Reliable support that's always there</li>
