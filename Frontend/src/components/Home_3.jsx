@@ -9,21 +9,28 @@ import backgroundImage from '../assets/home2.png' // Import the background image
 const Home_3 = () => {
   const cards = [
     {
-      img: assets.Card_icon_3,
-      heading: "Supported Independent Living (SIL)",
-      para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
-    },
-    {
-      img: assets.Card_icon_2,
-      heading: "Short Term Accommodation or Respite (STA)",
-      para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
-    },
-    {
-      img: assets.Card_icon_1,
-      heading: "Medium Term Accommodation (MTA)",
-      para: "Engaging programs that foster social connections and skill development in a safe, supportive environment."
-    }
+          img: assets.Card_icon_6,
+          heading: "Assistance with travel/transport arrangements",
+          para: "We arrange and provide transportation for our participants, facilitating their participation in community, social, economic, and daily life activities.",
+        },
+        {
+              img: assets.Card_icon_4,
+              heading: "Assistance with daily personal activities",
+              para: "We assist with daily living activities like personal hygiene, meal preparation, and mobility, enabling our participants to live as independently as possible both at home and within their community.",
+            },
+        {
+          img: assets.Card_icon_9,
+          heading: "Group and Centre- based Activities",
+          para: "We encourage and support our participants in engaging in social and recreational activities within group settings, allowing them to meet new people, form friendships, acquire new skills, enhance essential abilities, and enjoy themselves.",
+        }
   ];
+
+  const cardRefs = cards.map(() => useInView({ triggerOnce: true, threshold: 0.3 }));
+
+  const { ref: CareRef, inView: CareinView } = useInView({
+      triggerOnce: true, // Animation will trigger one time
+      threshold: 0.3, // Trigger animation when 30% of the element is visible
+    });
 
   return (
     <div 
@@ -43,50 +50,31 @@ const Home_3 = () => {
           <div className='text-lg max-w-[90%] sm:max-w-[45rem] text-center'>We are committed to delivering exceptional services tailored to meet each participant’s unique needs.</div>
         </div>
       </div>
-      {/* <div className="cards flex flex-wrap justify-center mt-16 gap-5">
-        {cards.map((item, index) => {
-          const { ref, inView } = useInView({
-            triggerOnce: true,
-            threshold: 0.5,
-          });
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:px-[12rem] md:px-[2rem] items-center justify-center">
+      {cards.map((service, index) => {
+        const { ref, inView } = cardRefs[index];
 
-          return (
-            <motion.div
-              key={index}
-              ref={ref}
-              className="card w-full sm:w-[19rem] h-fit border-2 border-black rounded-3xl pb-16 px-2"
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : undefined}
-              transition={{
-                ease: "easeOut",
-                duration: 1,
-                delay: index * 0.4,
-              }}
-              whileHover={{
-                translateY: -3,
-                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                transition: {
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                },
-              }}
-              style={{
-                perspective: 1000,
-                transformOrigin: "left center",
-              }}
-            >
-              <img src={item.img} alt={item.heading} className="w-2rem h-14 object-cover ml-9 mt-10 filter invert" />
-              <div className="heading mt-3 tracking-wider p-3 font-semibold text-2xl">{item.heading}</div>
-              <p className="p-3 break-words">{item.para}</p>
-              <p className='w-8 md:w-[14rem] h-[1.5px] bg-[#414141] ml-8 mt-10'></p>
-              <Link to='/Services'>
-                <button className='mt-5 ml-8 hover:text-yellow-200 font-medium mb-6 flex'>Learn More <MdArrowForward className='ml-2 text-lg mt-1' /></button>
-              </Link>
-            </motion.div>
-          );
-        })}
-      </div> */}
+        return (
+          <motion.div
+            key={index}
+            ref={ref}
+            initial={{ opacity: 0, transform: "rotateY(130deg)" }}
+            animate={inView ? { opacity: 1, transform: "rotateY(0deg)" } : {}}
+            transition={{
+              delay: index * 0.3,
+              duration: 1,
+              ease: "easeInOut",
+            }}
+            whileHover={{ scale: 1.05, y: 2 }}
+            className="bg-white p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
+          >
+            <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
+            <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
+            <p className="p-3 break-words" style={{ minHeight: "calc(100% - 8rem)" }}>{service.para}</p>
+          </motion.div>
+        );
+      })}
+    </div>
       <div className="OtherServices m-auto flex flex-col items-center text-center mt-28 transition-transform duration-500 ease-in-out hover:-translate-y-1">
         <div className="text-2xl font-medium mb-4 inline-block">Other Services</div>
         <div className="inline-block">
