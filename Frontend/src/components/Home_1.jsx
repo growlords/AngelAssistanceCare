@@ -24,7 +24,7 @@ const Home_1 = () => {
       <div className="divL flex-1 flex flex-col items-center md:items-start sm:px-10">
         <div className="mt-[6rem] px-4 sm:px-0 leading-[4vw] flex flex-col items-center sm:items-start">
           <div>
-            <h1 className='uppercase text-[6vw] sm:text-[2vw] md:text-[4vw] lg:text-[1.6vw] tracking-tight sm:leading-none md:leading-tight leading-8 font-semibold'>Welcome to Angel Assistance Care</h1>
+            <h1 className='uppercase text-[6vw] sm:text-[2vw] md:text-[4vw] lg:text-[2vw] tracking-tight sm:leading-none md:leading-tight leading-8 font-semibold'>Welcome to <span className='font-bold text-blue-500'>Angel Assistance Care</span></h1>
           </div>
 
           <div className='flex items-center mt-4 sm:mt-0'>
@@ -38,11 +38,11 @@ const Home_1 = () => {
               }}
               className='w-[6rem] h-[3rem] mt-3 rounded-xl' src={assets.img_2} alt="" /> */}
               <div>
-            <h1 className='uppercase text-[8vw] sm:text-[4vw] tracking-tight  leading-8 sm:leading-none font-semibold lg:text-[3rem]'>Empowering Abilities</h1></div>
+            <h1 className='uppercase text-[6.5vw] sm:text-[4vw] tracking-tight  leading-8 sm:leading-none font-semibold lg:text-[2.5rem]'>Empowering Abilities</h1></div>
           </div>
 
           <div>
-            <h1 className='uppercase text-[8vw] sm:text-[4vw] mt-5 tracking-tight leading-8 sm:leading-none font-semibold lg:text-[3rem]'>With Care and Compassion</h1>
+            <h1 className='uppercase text-[6.5vw] sm:text-[4vw] mt-5 tracking-tight leading-8 sm:leading-none font-semibold lg:text-[2.5rem]'>With Care and Compassion</h1>
           </div>
         </div>
 

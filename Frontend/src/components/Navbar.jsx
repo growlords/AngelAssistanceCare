@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src={assets.favicon} className="h-8 sm:h-12" alt="Logo" />
-                    <span className="self-center text-[0.75rem] sm:text-lg md:text-[0.7rem] lg:text-lg font-semibold whitespace-nowrap dark:text-white">Angel Assistance Care</span>
+                    <span className="self-center text-[0.85rem] sm:text-lg md:text-[0.8rem] lg:text-lg font-semibold whitespace-nowrap dark:text-white">Angel Assistance Care</span>
                 </Link>
                 <div className="flex md:order-2 items-center space-x-3 md:space-x-4 rtl:space-x-reverse">
                    
@@ -71,7 +71,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink to="/JoinUs" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={handleLinkClick}>
-                                Contact
+                                Career
                             </NavLink>
                         </li>
                     </ul>

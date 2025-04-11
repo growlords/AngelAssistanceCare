@@ -80,7 +80,7 @@ const About = () => {
             >
               WHO WE ARE
             </motion.h1>
-            <p className="w-full lg:w-[60rem] md:w-[40rem] text-center mt-4 sm:mt-0">
+            <p className="w-full lg:w-[60rem] md:w-[40rem] text-center mt-4 sm:mt-0 font-semibold">
               Our journey began with a shared commitment to improving the quality of care for those we serve. We believe in a holistic approach, focusing not only on physical health but also on emotional and social well-being. Our goal is to provide tailored support that meets the unique needs of everyone, fostering independence and enhancing quality of life.
             </p>
           </div>

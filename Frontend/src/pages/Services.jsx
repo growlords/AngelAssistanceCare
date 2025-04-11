@@ -159,7 +159,8 @@ const Services = () => {
                   ease: "easeInOut",
                 }}
                 whileHover={{ scale: 1.05, y: 2 }}
-                className="bg-white p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
+                className="p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 w-full sm:w-[20rem] min-h-[30rem] h-fit border-2 rounded-3xl px-2 mb-4"
+                style={{ backgroundColor: '#D2E5EE' }}
               >
                 <img src={service.img} alt="error" className="w-2rem h-12 object-cover ml-5 mt-5" />
                 <h3 className="heading mt-5 p-3 font-semibold text-2xl min-h-[8rem]">{service.heading}</h3>
