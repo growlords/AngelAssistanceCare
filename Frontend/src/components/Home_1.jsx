@@ -28,22 +28,19 @@ const Home_1 = () => {
           </div>
 
           <div className='flex items-center mt-4 sm:mt-0'>
-            {/* <motion.img
-              initial={{ width: 0 }}
-              animate={{ width: "6rem", height: "3rem" }}
-              transition={{
-                ease: [0.5, 0, 0.75, 0],
-                duration: 0.6,
-                delay: 2.1
-              }}
-              className='w-[6rem] h-[3rem] mt-3 rounded-xl' src={assets.img_2} alt="" /> */}
               <div>
-            <h1 className='uppercase text-[6.5vw] sm:text-[4vw] tracking-tight  leading-8 sm:leading-none font-semibold lg:text-[2.5rem]'>Empowering Abilities</h1></div>
+            </div>
           </div>
 
-          <div>
-            <h1 className='uppercase text-[6.5vw] sm:text-[4vw] mt-5 tracking-tight leading-8 sm:leading-none font-semibold lg:text-[2.5rem]'>With Care and Compassion</h1>
-          </div>
+          <div >
+  <h1 className="uppercase text-[6.5vw] sm:text-[4vw] lg:text-[2.5rem] mt-5 tracking-tight leading-8 sm:leading-none font-semibold">
+    With Care and Compassion
+  </h1>
+  <h1 className="uppercase text-[6.5vw] sm:text-[4vw] lg:text-[2.5rem] tracking-tight leading-8 sm:leading-none font-semibold">
+    Empowering Abilities
+  </h1>
+</div>
+
         </div>
 
         <div className='mt-5 px-4 sm:px-0'>
