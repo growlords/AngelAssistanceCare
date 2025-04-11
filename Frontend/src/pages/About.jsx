@@ -66,7 +66,7 @@ const About = () => {
             className="absolute inset-0 bg-cover bg-center  "
             style={{
               backgroundImage: `url(${assets.img_44})`,
-              opacity: 0.8
+              opacity: 0.65
             }}
             role="img"
             aria-label="Background image"
