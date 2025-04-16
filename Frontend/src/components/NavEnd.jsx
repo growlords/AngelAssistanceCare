@@ -96,7 +96,7 @@ const NavEnd = () => {
           </div>
         </div>
 
-        <motion.div className='flex flex-col items-center mt-[4rem]'
+        {/* <motion.div className='flex flex-col items-center mt-[4rem]'
           ref={ref}
           initial={{ y: 40, opacity: 0 }}
           animate={inView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
@@ -107,10 +107,10 @@ const NavEnd = () => {
             <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.instagram.com/rizzz.raman?igsh=MWZhanNtczFsbG4y&utm_source=qr" target="_blank" rel="noopener noreferrer"><FaInstagram /></a></li>
             <li className='bg-[#a4a4c7] p-3 text-3xl rounded-3xl w-[4rem] h-[4rem] flex justify-center items-center'><a href="https://www.youtube.com/watch?v=Kd57YHWqrsI&list=RDB0f4xyZSfvU&index=27" target="_blank" rel="noopener noreferrer"><FiYoutube /></a></li>
           </ul>
-        </motion.div>
+        </motion.div> */}
       </div>
 
-      {/* <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
+      <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
         <motion.div className="img"
           ref={Ref}
           initial={{ x: 100, opacity: 0 }}
@@ -127,7 +127,7 @@ const NavEnd = () => {
         >
           Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
         </motion.div>
-      </div> */}
+      </div>
 
       <div className="center_2 mt-14 sm:mt-[15rem] flex flex-col md:flow-col lg:flex-row items-center">
         <div className='left w-full sm:w-auto'>
