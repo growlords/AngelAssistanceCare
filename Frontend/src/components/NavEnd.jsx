@@ -92,7 +92,7 @@ const NavEnd = () => {
           <div className='gap-4 flex flex-col items-center'>
             <div className=''><TfiEmail className='w-[2rem] h-[2rem]' /></div>
             <div className='font-semibold text-xl'>Email</div>
-            <div className='text-base'>enquiries@angelassistancecare.au</div>
+            <div className='text-base'>enquiries@angelassistancecare.co</div>
           </div>
         </div>
 
