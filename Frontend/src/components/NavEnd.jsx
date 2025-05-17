@@ -111,23 +111,25 @@ const NavEnd = () => {
       </div>
 
       <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
-        <motion.div className="img"
-          ref={Ref}
-          initial={{ x: 100, opacity: 0 }}
-          animate={ComeInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-          transition={{ ease: "easeInOut", duration: 1 }}
-        >
-          <img className='w-[10rem] h-[4rem]' src={assets.img_18} alt="" />
-        </motion.div>
-        <motion.div className='px-4 sm:px-[15rem] text-center text-lg font-medium'
-          ref={Ref}
-          initial={{ x: -350, opacity: 0 }}
-          animate={ComeInView ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
-          transition={{ ease: "easeInOut", duration: 1.5 }}
-        >
-          Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
-        </motion.div>
-      </div>
+  <motion.div className="img"
+    ref={Ref}
+    initial={{ x: 100, opacity: 0 }}
+    animate={ComeInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+    transition={{ ease: "easeInOut", duration: 1 }}
+  >
+    <img className='w-[10rem] h-[4rem]' src={assets.img_18} alt="" />
+  </motion.div>
+
+  <motion.div className='px-4 sm:px-[5rem] md:px-[10rem] lg:px-[15rem] text-center text-lg font-medium'
+    ref={Ref}
+    initial={{ x: -350, opacity: 0 }}
+    animate={ComeInView ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
+    transition={{ ease: "easeInOut", duration: 1.5 }}
+  >
+    Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
+  </motion.div>
+</div>
+
 
       <div className="center_2 mt-14 sm:mt-[15rem] flex flex-col md:flow-col lg:flex-row items-center">
         <div className='left w-full sm:w-auto'>
