@@ -12,6 +12,9 @@ import backgroundImage from '../assets/home2.png' ;
 const NavEnd = () => {
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
+  const isMobile = window.innerWidth < 640;
+
+
   const {
     register,
     handleSubmit,
@@ -113,18 +116,18 @@ const NavEnd = () => {
       <div className="center_1 gap-4 flex flex-col justify-center items-center mt-14">
   <motion.div className="img"
     ref={Ref}
-    initial={{ x: 100, opacity: 0 }}
-    animate={ComeInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-    transition={{ ease: "easeInOut", duration: 1 }}
+    initial={{ x: isMobile ? 50 : 100, opacity: 0 }}
+    animate={ComeInView ? { x: 0, opacity: 1 } : { x: isMobile ? 50 : 100, opacity: 0 }}
+    transition={{ ease: "easeInOut", duration: isMobile ? 0.6 : 1 }}
   >
     <img className='w-[10rem] h-[4rem]' src={assets.img_18} alt="" />
   </motion.div>
 
   <motion.div className='px-4 sm:px-[5rem] md:px-[10rem] lg:px-[15rem] text-center text-lg font-medium'
     ref={Ref}
-    initial={{ x: -350, opacity: 0 }}
-    animate={ComeInView ? { x: 0, opacity: 1 } : { x: -350, opacity: 0 }}
-    transition={{ ease: "easeInOut", duration: 1.5 }}
+    initial={{ x: isMobile ? -100 : -350, opacity: 0 }}
+    animate={ComeInView ? { x: 0, opacity: 1 } : { x: isMobile ? -100 : -350, opacity: 0 }}
+    transition={{ ease: "easeInOut", duration: isMobile ? 0.9 : 1.5 }}
   >
     Angel Assistance Care acknowledges the traditional owners of the land upon which we live and work, and we pay our respects to the elders both past and present.
   </motion.div>
