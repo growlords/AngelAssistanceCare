@@ -13,7 +13,19 @@ const port = 3000;
 
 // Use CORS middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+const cors = require('cors');
+
+const corsOptions = {
+  origin: 'https://angelassistancecare.co', // ✅ Your new frontend domain
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
