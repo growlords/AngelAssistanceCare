@@ -313,7 +313,7 @@ const Services = () => {
                         height="40"
                         loading="lazy"
                         decoding="async"
-                        className="w-10 h-10 object-contain"
+                        className="w-10 h-10 object-contain [filter:saturate(7)_brightness(0.93)]"
                       />
                     </div>
                     <span className="font-display font-black text-4xl text-[#0F253E]/15 group-hover:text-[#2A9D8F]/30 transition-colors">
@@ -363,7 +363,7 @@ const Services = () => {
                 height="48"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain [filter:saturate(7)_brightness(0.93)]"
               />
             </div>
             <div className="flex-1">
