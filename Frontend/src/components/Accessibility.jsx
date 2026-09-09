@@ -8,7 +8,7 @@ import {
   Sun, 
   Moon, 
   Contrast, 
-  Link, 
+  Link as LinkIcon, 
   RotateCcw,
   X 
 } from 'lucide-react';
@@ -22,27 +22,25 @@ const AccessibilityTools = () => {
   const [isLightBackground, setIsLightBackground] = useState(true);
   const [underlineLinks, setUnderlineLinks] = useState(false);
 
-  // Apply styles to the entire document body
   const applyStyles = () => {
     document.body.style.fontSize = `${fontSize}px`;
-    document.body.style.filter = isGrayscale ? 'grayscale(1)' : 'none';
+    document.body.style.filter = isGrayscale
+      ? 'grayscale(1)'
+      : isNegativeContrast
+      ? 'invert(1)'
+      : 'none';
     
     if (isHighContrast) {
-      document.body.style.backgroundColor = '#000';
-      document.body.style.color = '#fff';
-    } else if (isNegativeContrast) {
-      document.body.style.filter = 'invert(1)';
+      document.body.style.backgroundColor = '#000000';
+      document.body.style.color = '#FFFFFF';
     } else {
-      document.body.style.backgroundColor = isLightBackground ? '#fff' : '#222';
-      document.body.style.color = isLightBackground ? '#000' : '#fff';
-      document.body.style.filter = 'none';
+      document.body.style.backgroundColor = isLightBackground ? '#F8FAFC' : '#111827';
+      document.body.style.color = isLightBackground ? '#1E293B' : '#F8FAFC';
     }
 
-    if (underlineLinks) {
-      const links = document.getElementsByTagName('a');
-      for (let link of links) {
-        link.style.textDecoration = 'underline';
-      }
+    const links = document.getElementsByTagName('a');
+    for (let link of links) {
+      link.style.textDecoration = underlineLinks ? 'underline' : '';
     }
   };
 
@@ -53,7 +51,7 @@ const AccessibilityTools = () => {
     setIsNegativeContrast(false);
     setIsLightBackground(true);
     setUnderlineLinks(false);
-    document.body.style = '';
+    document.body.style.cssText = '';
     const links = document.getElementsByTagName('a');
     for (let link of links) {
       link.style.textDecoration = '';
@@ -65,101 +63,129 @@ const AccessibilityTools = () => {
   }, [fontSize, isGrayscale, isHighContrast, isNegativeContrast, isLightBackground, underlineLinks]);
 
   return (
-    <div className="fixed right-4 top-1/4 transform -translate-y-1/2 z-50">
-      {/* Main Accessibility Icon Button */}
+    <div className="fixed right-4 bottom-8 z-[9990]">
+      {/* Trigger Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-900 text-yellow-300 p-3 rounded-full hover:bg-gray-800 transition-colors"
-        aria-label="Accessibility Tools"
+        className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-brand-navy text-brand-gold hover:text-white border-2 border-brand-gold/40 shadow-elevated hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-blue/30"
+        aria-label="Open Accessibility Tools"
+        title="Accessibility Tools"
       >
-        <Accessibility size={24} />
+        <Accessibility className="w-6 h-6" />
+        <span className="sr-only">Accessibility Preferences</span>
       </button>
 
-      {/* Popup Menu */}
+      {/* Popover Panel */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-gray-900 text-yellow-300 rounded-lg shadow-lg p-4">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Accessibility Tools</h2>
+        <div 
+          className="absolute right-0 bottom-16 w-72 bg-brand-navy/95 backdrop-blur-xl text-white rounded-3xl shadow-2xl p-5 border border-white/20 animate-in fade-in slide-in-from-bottom-3 duration-200"
+          role="dialog"
+          aria-label="Accessibility settings"
+        >
+          <div className="flex justify-between items-center pb-3 border-b border-white/10 mb-4">
+            <div className="flex items-center gap-2 text-brand-gold">
+              <Accessibility className="w-5 h-5" />
+              <h2 className="font-display font-bold text-sm text-white">Accessibility Tools</h2>
+            </div>
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-yellow-300 hover:text-yellow-100"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close menu"
             >
-              <X size={20} />
+              <X size={16} />
             </button>
           </div>
 
-          <div className="flex flex-col space-y-3">
-            <button 
-              onClick={() => setFontSize(prev => prev + 2)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
-            >
-              <ZoomIn size={18} /> Increase Text
-            </button>
+          <div className="flex flex-col space-y-2 text-xs">
+            {/* Text Zoom */}
+            <div className="grid grid-cols-2 gap-2">
+              <button 
+                onClick={() => setFontSize(prev => prev + 2)}
+                className="flex items-center justify-center gap-2 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <ZoomIn size={14} /> Increase
+              </button>
 
-            <button 
-              onClick={() => setFontSize(prev => Math.max(prev - 2, 12))}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
-            >
-              <ZoomOut size={18} /> Decrease Text
-            </button>
+              <button 
+                onClick={() => setFontSize(prev => Math.max(prev - 2, 12))}
+                className="flex items-center justify-center gap-2 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <ZoomOut size={14} /> Decrease
+              </button>
+            </div>
 
-            <button 
-              onClick={() => setIsGrayscale(prev => !prev)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
-            >
-              <PaintBucket size={18} /> Grayscale
-            </button>
-
+            {/* High Contrast */}
             <button 
               onClick={() => setIsHighContrast(prev => !prev)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-colors ${
+                isHighContrast ? 'bg-brand-gold text-brand-navy border-brand-gold font-bold' : 'bg-white/5 border-white/10 hover:bg-white/15'
+              }`}
             >
-              <Contrast size={18} /> High Contrast
+              <span className="flex items-center gap-2"><Contrast size={14} /> High Contrast</span>
+              <span>{isHighContrast ? 'ON' : 'OFF'}</span>
             </button>
 
+            {/* Grayscale */}
+            <button 
+              onClick={() => setIsGrayscale(prev => !prev)}
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-colors ${
+                isGrayscale ? 'bg-brand-gold text-brand-navy border-brand-gold font-bold' : 'bg-white/5 border-white/10 hover:bg-white/15'
+              }`}
+            >
+              <span className="flex items-center gap-2"><PaintBucket size={14} /> Grayscale</span>
+              <span>{isGrayscale ? 'ON' : 'OFF'}</span>
+            </button>
+
+            {/* Invert */}
             <button 
               onClick={() => setIsNegativeContrast(prev => !prev)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-colors ${
+                isNegativeContrast ? 'bg-brand-gold text-brand-navy border-brand-gold font-bold' : 'bg-white/5 border-white/10 hover:bg-white/15'
+              }`}
             >
-              <Moon size={18} /> Negative Contrast
+              <span className="flex items-center gap-2"><Moon size={14} /> Invert Colors</span>
+              <span>{isNegativeContrast ? 'ON' : 'OFF'}</span>
             </button>
 
-            <button 
-              onClick={() => setIsLightBackground(prev => !prev)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
-            >
-              <Sun size={18} /> Light Background
-            </button>
-
+            {/* Underline Links */}
             <button 
               onClick={() => setUnderlineLinks(prev => !prev)}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-colors ${
+                underlineLinks ? 'bg-brand-gold text-brand-navy border-brand-gold font-bold' : 'bg-white/5 border-white/10 hover:bg-white/15'
+              }`}
             >
-              <Link size={18} /> Links Underline
+              <span className="flex items-center gap-2"><LinkIcon size={14} /> Highlight Links</span>
+              <span>{underlineLinks ? 'ON' : 'OFF'}</span>
             </button>
 
+            {/* Dyslexic Font */}
             <button 
               onClick={() => {
-                const font = document.createElement('link');
-                font.href = 'https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap';
-                font.rel = 'stylesheet';
-                document.head.appendChild(font);
+                const fontId = 'opendyslexic-font';
+                if (!document.getElementById(fontId)) {
+                  const font = document.createElement('link');
+                  font.id = fontId;
+                  font.href = 'https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap';
+                  font.rel = 'stylesheet';
+                  document.head.appendChild(font);
+                }
                 document.body.style.fontFamily = 'OpenDyslexic, sans-serif';
               }}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/15 transition-colors"
             >
-              <Type size={18} /> Readable Font
+              <span className="flex items-center gap-2"><Type size={14} /> Readable Font</span>
+              <span className="text-[10px] text-slate-400">OpenDyslexic</span>
             </button>
 
+            {/* Reset */}
             <button 
               onClick={() => {
                 resetStyles();
                 setIsOpen(false);
               }}
-              className="flex items-center gap-2 hover:text-yellow-100 transition-colors"
+              className="mt-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-semibold"
             >
-              <RotateCcw size={18} /> Reset
+              <RotateCcw size={14} /> Reset All Preferences
             </button>
           </div>
         </div>

@@ -1,88 +1,218 @@
-import React from 'react'
-import { BsSearch } from "react-icons/bs";
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { assets } from '../assets/assets';
-import { easeInOut, motion } from "framer-motion";
-import backgroundImage from '../assets/Untitled design.png'
- // Import the next background image
+import { ArrowRight, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import HeroCanvas3D from './HeroCanvas3D';
 
 const Home_1 = () => {
+  const containerRef = useRef(null);
+
+  // Subtle mouse tracking for the hero visual on desktop
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
-    <div 
-      className="divM w-full h-screen flex flex-col sm:flex-row" 
-      style={{
-        margin: '0',
-        padding: '0',
-        backgroundImage: `url(${backgroundImage})`, // Set the background image without gradient
-        backgroundSize: 'cover',  // Ensures the image covers the entire screen and adjusts with screen size
-        backgroundPosition: 'center',  // Centers the image
-        backgroundRepeat: 'no-repeat',  // Prevents image from repeating
-        width: '100%',
-        height: '100%',  // Ensures the div takes up the full viewport height
-      }}
+    <section 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative min-h-[96vh] flex items-center justify-center pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden scene-hero"
+      aria-label="Welcome and Hero Introduction"
     >
-    <div className='divM w-full h-screen flex flex-col lg:flex-row lg:mt-[6rem]' >
-      <div className="divL flex-1 flex flex-col items-center md:items-start sm:px-10">
-        <div className="mt-[6rem] px-4 sm:px-0 leading-[4vw] flex flex-col items-center sm:items-start">
-          <div>
-            <h1 className='uppercase text-[6vw] sm:text-[2vw] md:text-[4vw] lg:text-[2vw] tracking-tight sm:leading-none md:leading-tight leading-8 font-semibold'>Welcome to <span className='font-bold text-blue-500'>Angel Assistance Care</span></h1>
+      {/* 3D Interactive Three.js Particle Canvas (Teal, Aqua, Coral, Peach) */}
+      <HeroCanvas3D />
+
+      {/* Radiant ambient glow orbs behind content */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[70vw] max-w-5xl h-[450px] bg-radial from-[#2A9D8F]/15 via-[#E76F51]/10 to-transparent blur-3xl rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-10 -left-10 w-[35vw] h-[35vw] bg-[#F4A261]/12 blur-3xl rounded-full pointer-events-none z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Left Editorial Content (High Contrast Light Palette) */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            
+            {/* Top Pill / Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-[#2A9D8F]/25 shadow-sm mb-6"
+            >
+              <Sparkles className="w-4 h-4 text-[#E76F51]" />
+              <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#0F253E]">
+                Registered NDIS Provider <span className="text-[#2A9D8F]">Victoria, Australia</span>
+              </span>
+            </motion.div>
+
+            {/* Semantic Primary H1 (Clear Value Proposition & Brand Entity) */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="space-y-2 sm:space-y-3"
+            >
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0F253E] leading-[1.08]">
+                Compassionate NDIS Support &amp; Care <span className="text-gradient-coral">for Every Journey</span>
+              </h1>
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#2A9D8F] leading-[1.15]">
+                Empowering Abilities with <span className="text-[#0F253E]">Angel Assistance Care</span>
+              </h2>
+            </motion.div>
+
+            {/* Preserved Authentic Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mt-6 text-base sm:text-lg lg:text-xl text-[#475569] max-w-2xl font-normal leading-relaxed"
+            >
+              Angel Assistance Care is here to remind you that every journey is unique. With compassion, support, and care, we help transform challenges into triumphs for participants and families across Melton and Victoria.
+            </motion.p>
+
+            {/* Action Buttons with Light Warm Healthcare Polish */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="mt-8 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+            >
+              <Link
+                to="/services"
+                className="w-full sm:w-auto btn-magnetic-coral group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-base font-extrabold shadow-md"
+                data-cursor="explore"
+                aria-label="Explore our NDIS Support Services"
+              >
+                <span>Explore Services</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+
+              <Link
+                to="/enquiries"
+                className="w-full sm:w-auto btn-secondary-light inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-base font-bold transition-all duration-300 transform hover:-translate-y-0.5"
+                aria-label="Get in touch with Angel Assistance Care"
+              >
+                <Heart className="w-4 h-4 text-[#E76F51]" />
+                <span>Get In Touch</span>
+              </Link>
+            </motion.div>
+
+            {/* Trust Metrics Pill Group (Australian English: Person-Centred) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-12 pt-8 border-t border-[#0F253E]/10 grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-lg"
+            >
+              <div className="flex flex-col">
+                <span className="font-display font-black text-2xl sm:text-3xl text-[#0F253E]">100%</span>
+                <span className="text-xs text-[#2A9D8F] font-bold uppercase tracking-wider mt-0.5">Person-Centred</span>
+              </div>
+              <div className="flex flex-col border-x border-[#0F253E]/10 px-3 sm:px-6">
+                <span className="font-display font-black text-2xl sm:text-3xl text-[#E76F51]">24/7</span>
+                <span className="text-xs text-[#2A9D8F] font-bold uppercase tracking-wider mt-0.5">Support Staff</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-display font-black text-2xl sm:text-3xl text-[#0F253E]">NDIS</span>
+                <span className="text-xs text-[#2A9D8F] font-bold uppercase tracking-wider mt-0.5">Verified</span>
+              </div>
+            </motion.div>
+
           </div>
 
-          <div className='flex items-center mt-4 sm:mt-0'>
-              <div>
-            </div>
+          {/* Right Layered Visual with Authentic Image `img_42` */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            <motion.div
+              style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+              className="relative w-[310px] h-[310px] sm:w-[390px] sm:h-[390px] md:w-[440px] md:h-[440px]"
+            >
+              {/* Animated luminous concentric rings */}
+              <div className="absolute -inset-6 rounded-full border-2 border-dashed border-[#2A9D8F]/30 animate-[spin_50s_linear_infinite]" />
+              <div className="absolute -inset-3 rounded-full border border-[#E76F51]/35 shadow-sm animate-pulse" />
+              
+              {/* Radial glow background */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#2A9D8F]/15 via-[#F4A261]/15 to-[#EEF7F7] rounded-full blur-xl -z-10" />
+
+              {/* Main Authentic Image Portal with Descriptive Alt Text & Explicit Dimensions */}
+              <motion.div
+                initial={{ scale: 0.88, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full rounded-full overflow-hidden p-3 bg-white/80 shadow-2xl border-2 border-white"
+              >
+                <img
+                  src={assets.img_42}
+                  alt="Angel Assistance Care support worker assisting an NDIS participant with compassionate care"
+                  width="440"
+                  height="440"
+                  decoding="async"
+                  className="w-full h-full object-cover rounded-full shadow-inner hover:scale-105 transition-transform duration-700 ease-out"
+                  data-cursor="view"
+                />
+              </motion.div>
+
+              {/* Authentic NDIS Accreditation Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                className="absolute -bottom-4 -right-2 sm:bottom-2 sm:right-0 bg-white/95 backdrop-blur-xl p-3.5 sm:p-4 rounded-3xl shadow-lg border border-[#0F253E]/10 flex items-center gap-3.5"
+              >
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#EEF7F7] p-1 flex items-center justify-center shadow-xs border border-[#2A9D8F]/15">
+                  <img
+                    src={assets.ndis}
+                    alt="National Disability Insurance Scheme Registered Provider Australia"
+                    width="56"
+                    height="56"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[11px] uppercase tracking-wider font-extrabold text-[#E76F51] flex items-center gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#2A9D8F] inline" />
+                    Verified Provider
+                  </span>
+                  <span className="text-xs sm:text-sm font-black text-[#0F253E]">
+                    NDIS Registered
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Floating Pulse Pill */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="hidden sm:flex absolute -top-4 -left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-md border border-[#2A9D8F]/30 items-center gap-2.5"
+              >
+                <div className="w-2.5 h-2.5 rounded-full bg-[#2A9D8F] animate-ping" />
+                <span className="text-xs font-bold text-[#0F253E]">Compassionate Care</span>
+              </motion.div>
+
+            </motion.div>
           </div>
 
-          <div >
-  <h1 className="uppercase text-[6.5vw] sm:text-[4vw] lg:text-[2.5rem] mt-5 tracking-tight leading-8 sm:leading-none font-semibold">
-    With Care and Compassion
-  </h1>
-  <h1 className="uppercase text-[6.5vw] sm:text-[4vw] lg:text-[2.5rem] tracking-tight leading-8 sm:leading-none font-semibold">
-    Empowering Abilities
-  </h1>
-</div>
-
         </div>
-
-        <div className='mt-5 px-4 sm:px-0'>
-          <p className="quote w-full sm:w-[50vw] mt-3 text-base md:text-[1.2rem] lg:text-[1rem]">Angel Assistance Care is here to remind you that every journey is unique. With compassion, support, and care, we help transform challenges into triumphs for those who need it most.</p>
-        </div>
-
-        
       </div>
-      <div className="divR flex-1 relative top-16 rounded-full flex justify-center sm:justify-end md:justify-center ">
-        <motion.div className="imgB w-[275px] h-[275px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] object-cover rounded-full overflow-hidden flex justify-center items-center"
-          animate={{
-            scale: [1, 1.1, 1.1, 1],
-            rotate: [180, 180, 0, 0],
-          }}
-          transition={{
-            duration: 2.5,
-            ease: "easeInOut",
-            times: [0, 0.25, 0.5, 0.5, 1],
-            repeat: 0
-          }}>
-          <img
-            className="w-full h-full"
-            src={assets.img_42}
-            alt="Image"
-          />
-        </motion.div>
-        <motion.div 
-          className='absolute top-[12rem] right-[4.5rem] sm:top-[18rem] sm:right-[3rem] md:top-[17rem] md:right-[10rem] lg:top-[21rem] lg:right-[4.5rem]'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.3 }}
-        >
-          <img 
-            className='w-[6rem] h-[6rem] sm:w-[8rem] sm:h-[8rem] md:w-[10rem] md:h-[10rem] lg:w-[12rem] lg:h-[12rem]' 
-            src={assets.ndis} 
-            alt="not found" 
-          />
-        </motion.div>
-      </div>
-    </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default Home_1
+export default Home_1;

@@ -2,46 +2,248 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Active link styling */
-a.active hr {
-  @apply block; /* Using Tailwind's utility classes for consistency */
+:root {
+  --color-brand-ivory: #FBF9F5;
+  --color-brand-cream: #FFF7F1;
+  --color-brand-aqua: #EEF7F7;
+  --color-brand-mist: #F0F7FA;
+  --color-brand-peach: #FFF4ED;
+  --color-brand-teal: #2A9D8F;
+  --color-brand-teal-dark: #1E7B70;
+  --color-brand-coral: #E76F51;
+  --color-brand-amber: #F4A261;
+  --color-brand-navy: #0F253E;
+  --color-brand-slate: #475569;
 }
 
-/* Responsive styling for active links on small screens */
-@media (max-width: 640px) {
-  a.active {
-    @apply bg-black text-white; /* Tailwind utilities for background and text color */
-  }
+html {
+  scroll-behavior: auto; /* Managed with Lenis */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Reset margin and padding for html and body */
-html, body {
-  @apply m-0 p-0;
-  @apply w-full h-full; /* Ensure full width and height */
+body {
+  @apply m-0 p-0 w-full min-h-screen font-sans bg-[#FBF9F5] text-[#0F253E];
+  overflow-x: hidden;
 }
 
-/* Ensure the root div takes full height */
 #root {
-  @apply min-h-screen;
+  @apply min-h-screen flex flex-col w-full overflow-x-hidden;
 }
 
-/* Dark Mode */
+/* ===================================================
+   SCENE ENVIRONMENTS (LIGHT RHYTHM SYSTEM)
+   =================================================== */
+
+/* Scene: Hero (Warm Ivory + Soft Sky Breeze) */
+.scene-hero {
+  background: linear-gradient(180deg, #FBF9F5 0%, #F0F7FA 55%, #EEF7F7 100%);
+  color: #0F253E;
+}
+
+/* Scene: Aqua (Gentle Healthcare Teal & Aqua) */
+.scene-aqua {
+  background: linear-gradient(180deg, #EEF7F7 0%, #E2F2F2 50%, #EEF7F7 100%);
+  color: #0F253E;
+}
+
+/* Scene: Cream / Warm Ivory */
+.scene-cream {
+  background: linear-gradient(180deg, #FFF9F4 0%, #FAF4ED 60%, #FFF9F4 100%);
+  color: #0F253E;
+}
+
+/* Scene: Sky Mist (Airy Blue Horizon) */
+.scene-mist {
+  background: linear-gradient(180deg, #F0F7FA 0%, #E4EFF7 55%, #EEF7F7 100%);
+  color: #0F253E;
+}
+
+/* Scene: Warm Peach / Human Touch */
+.scene-peach {
+  background: linear-gradient(180deg, #FFF4ED 0%, #FDEEE4 60%, #FFF4ED 100%);
+  color: #0F253E;
+}
+
+/* Scene: Footer (Deep Oceanic Teal Plaque) */
+.scene-footer {
+  background: radial-gradient(circle at 50% 0%, #133954 0%, #0D2438 85%);
+  color: #FFFFFF;
+}
+
+/* Backwards compatibility aliases */
+.scene-midnight { background: linear-gradient(180deg, #FBF9F5 0%, #F0F7FA 60%, #EEF7F7 100%); color: #0F253E; }
+.scene-cobalt { background: linear-gradient(180deg, #EEF7F7 0%, #E2F2F2 50%, #EEF7F7 100%); color: #0F253E; }
+.scene-canvas-light { background: #FFF9F4; color: #0F253E; }
+.scene-sapphire { background: linear-gradient(180deg, #F0F7FA 0%, #E4EFF7 55%, #EEF7F7 100%); color: #0F253E; }
+.scene-contact { background: linear-gradient(180deg, #FFF4ED 0%, #FDEEE4 60%, #FFF4ED 100%); color: #0F253E; }
+
+/* ===================================================
+   GLASSMORPHISM & ACCENTS (LIGHT & WARM)
+   =================================================== */
+
+/* Light Acrylic Glass Card */
+.light-glass-card,
+.dark-glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(42, 157, 143, 0.16);
+  box-shadow: 0 12px 36px -8px rgba(15, 37, 62, 0.08);
+  color: #0F253E;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-glass-card:hover,
+.dark-glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(231, 111, 81, 0.45);
+  box-shadow: 0 22px 45px -10px rgba(231, 111, 81, 0.16);
+}
+
+/* Light Card High Contrast */
+.light-card-contrast {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 37, 62, 0.1);
+  box-shadow: 0 10px 30px -8px rgba(15, 37, 62, 0.07);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-card-contrast:hover {
+  transform: translateY(-4px);
+  border-color: #2A9D8F;
+  box-shadow: 0 20px 40px -10px rgba(42, 157, 143, 0.18);
+}
+
+/* Glass Navigation */
+.glass-nav-default {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 37, 62, 0.06);
+}
+
+.glass-nav-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(15, 37, 62, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(15, 37, 62, 0.08);
+}
+
+/* Text Gradients */
+.text-gradient-coral,
+.text-gradient-gold {
+  background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal,
+.text-gradient-sky {
+  background: linear-gradient(135deg, #1E7B70 0%, #2A9D8F 60%, #38A3D8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(135deg, #0F253E 0%, #1B3E68 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button Micro-interactions */
+.btn-magnetic-coral,
+.btn-magnetic-gold {
+  position: relative;
+  background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -4px rgba(231, 111, 81, 0.38);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-magnetic-coral:hover,
+.btn-magnetic-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px -4px rgba(231, 111, 81, 0.55);
+}
+
+.btn-magnetic-teal {
+  position: relative;
+  background: linear-gradient(135deg, #2A9D8F 0%, #1E7B70 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -4px rgba(42, 157, 143, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-magnetic-teal:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px -4px rgba(42, 157, 143, 0.5);
+}
+
+.btn-secondary-light {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0F253E;
+  border: 1px solid rgba(15, 37, 62, 0.16);
+  font-weight: 600;
+  box-shadow: 0 4px 14px -2px rgba(15, 37, 62, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-light:hover {
+  transform: translateY(-2px);
+  border-color: #2A9D8F;
+  color: #1E7B70;
+  box-shadow: 0 8px 20px -3px rgba(42, 157, 143, 0.2);
+}
+
+/* Custom Scrollbar (Light Healthcare Theme) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F4F8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A3D9D2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A9D8F;
+}
+
+/* Accessibility & High Contrast Override Modes */
 .dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #050B16 !important;
+  color: #FFFFFF !important;
 }
 
-/* High Contrast Mode */
 .high-contrast {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
 }
 
 .high-contrast a {
-  color: #00ffff;
+  color: #00FFFF !important;
 }
 
 .high-contrast button {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

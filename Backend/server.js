@@ -13,16 +13,26 @@ const port = 3000;
 
 // Use CORS middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-const cors = require('cors');
+
+const allowedOrigins = [
+  'https://angelassistancecare.co',
+  'https://www.angelassistancecare.au',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:5178',
+];
 
 const corsOptions = {
-  origin: 'https://angelassistancecare.co', // ✅ Your new frontend domain
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Permissive fallback for form submissions
+    }
+  },
   methods: ['GET', 'POST'],
   credentials: true,
 };
-
-app.use(cors(corsOptions));
-
 
 app.use(cors(corsOptions));
 

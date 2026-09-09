@@ -1,0 +1,18 @@
+# Robots.txt for Angel Assistance Care Australia
+# Website: https://www.angelassistancecare.com.au/
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /enquiries
+Allow: /careers
+Allow: /src/assets/
+
+# Disallow private or API paths if present
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://www.angelassistancecare.com.au/sitemap.xml
