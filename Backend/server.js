@@ -39,16 +39,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'public', 'CV', 'uploads')); // Save uploaded files to 'public/CV/uploads' directory
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique file name with timestamp
-  },
-});
-
+// Configure multer for file uploads (memory storage for serverless environments)
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // Configure nodemailer transporter
@@ -90,7 +82,7 @@ app.post('/api/send-mail', upload.single('file'), async (req, res) => {
       attachments: [
         {
           filename: req.file.originalname,
-          path: req.file.path,
+          content: req.file.buffer,
         },
       ],
     };
