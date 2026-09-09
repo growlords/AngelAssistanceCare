@@ -16,6 +16,7 @@ const Home_1 = () => {
   const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
   const handleMouseMove = (e) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) return;
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -164,6 +165,7 @@ const Home_1 = () => {
                   width="440"
                   height="440"
                   decoding="async"
+                  fetchPriority="high"
                   className="w-full h-full object-cover rounded-full shadow-inner hover:scale-105 transition-transform duration-700 ease-out"
                   data-cursor="view"
                 />

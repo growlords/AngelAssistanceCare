@@ -13,13 +13,17 @@ const SplashScreen = ({ onFinish }) => {
       return;
     }
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const exitDelay = isMobile ? 1100 : 1800;
+    const finishDelay = isMobile ? 1500 : 2400;
+
     const exitTimer = setTimeout(() => {
       setIsExiting(true);
-    }, 1800);
+    }, exitDelay);
 
     const finishTimer = setTimeout(() => {
       if (onFinish) onFinish();
-    }, 2400);
+    }, finishDelay);
 
     return () => {
       clearTimeout(exitTimer);

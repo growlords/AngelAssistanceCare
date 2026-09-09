@@ -1,11 +1,7 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import About from './pages/About';
-import Enquiries from './pages/Enquiries';
-import Services from './pages/Services';
-import JoinUs from './pages/JoinUs';
 import NavEnd from './components/NavEnd';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
@@ -13,6 +9,12 @@ import CustomCursor from './components/CustomCursor';
 import AmbientBackground from './components/AmbientBackground';
 import AccessibilityTools from './components/Accessibility';
 import useLenis from './hooks/useLenis';
+
+// Code-split secondary routes so initial page load on mobile is lean and fast
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const Enquiries = lazy(() => import('./pages/Enquiries'));
+const JoinUs = lazy(() => import('./pages/JoinUs'));
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -41,28 +43,30 @@ function App() {
 
         {/* Semantic main element */}
         <main id="main-content" tabIndex="-1" className="flex-1 w-full outline-none">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            
-            {/* About */}
-            <Route path="/about" element={<About />} />
-            <Route path="/About" element={<About />} />
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              
+              {/* About */}
+              <Route path="/about" element={<About />} />
+              <Route path="/About" element={<About />} />
 
-            {/* Services (canonical lowercase and legacy PascalCase) */}
-            <Route path="/services" element={<Services />} />
-            <Route path="/Services" element={<Services />} />
+              {/* Services (canonical lowercase and legacy PascalCase) */}
+              <Route path="/services" element={<Services />} />
+              <Route path="/Services" element={<Services />} />
 
-            {/* Enquiries & Contact aliases */}
-            <Route path="/enquiries" element={<Enquiries />} />
-            <Route path="/Enquiries" element={<Enquiries />} />
-            <Route path="/contact" element={<Enquiries />} />
+              {/* Enquiries & Contact aliases */}
+              <Route path="/enquiries" element={<Enquiries />} />
+              <Route path="/Enquiries" element={<Enquiries />} />
+              <Route path="/contact" element={<Enquiries />} />
 
-            {/* Careers & Join Us aliases */}
-            <Route path="/careers" element={<JoinUs />} />
-            <Route path="/JoinUs" element={<JoinUs />} />
-            <Route path="/joinus" element={<JoinUs />} />
-            <Route path="/join-us" element={<JoinUs />} />
-          </Routes>
+              {/* Careers & Join Us aliases */}
+              <Route path="/careers" element={<JoinUs />} />
+              <Route path="/JoinUs" element={<JoinUs />} />
+              <Route path="/joinus" element={<JoinUs />} />
+              <Route path="/join-us" element={<JoinUs />} />
+            </Routes>
+          </Suspense>
         </main>
 
         <NavEnd />

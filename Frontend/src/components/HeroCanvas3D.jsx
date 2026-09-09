@@ -19,6 +19,7 @@ const HeroCanvas3D = () => {
     let mouseY = 0;
 
     try {
+      const isMobile = window.innerWidth < 768;
       const width = container.clientWidth || window.innerWidth;
       const height = container.clientHeight || window.innerHeight;
 
@@ -27,11 +28,10 @@ const HeroCanvas3D = () => {
       camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 1000);
       camera.position.z = 42;
 
-      // 2. WebGL Renderer with Alpha & mobile-optimized pixel ratio
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+      // 2. WebGL Renderer with Alpha & mobile-optimized pixel ratio (1.0 on mobile to preserve GPU fillrate)
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile, powerPreference: 'low-power' });
       renderer.setSize(width, height);
-      const isMobile = window.innerWidth < 768;
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.2 : 1.5));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.0 : 1.5));
       container.appendChild(renderer.domElement);
 
       // Create a smooth radial particle texture on the fly (soft glowing circles)
@@ -55,8 +55,8 @@ const HeroCanvas3D = () => {
 
       const particleTexture = createParticleTexture();
 
-      // 3. Healthcare Light Palette Particle Geometry
-      const particleCount = isMobile ? 420 : 1100;
+      // 3. Healthcare Light Palette Particle Geometry (Mobile: 240 particles, Desktop: 1100)
+      const particleCount = isMobile ? 240 : 1100;
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
       const colors = new Float32Array(particleCount * 3);
@@ -100,7 +100,7 @@ const HeroCanvas3D = () => {
 
       // 4. Material configured for light canvas
       const material = new THREE.PointsMaterial({
-        size: isMobile ? 0.8 : 0.65,
+        size: isMobile ? 0.85 : 0.65,
         map: particleTexture,
         vertexColors: true,
         transparent: true,
@@ -113,7 +113,7 @@ const HeroCanvas3D = () => {
       scene.add(points);
 
       // 5. Outer subtle ambient orbital ring of soft peach/coral floating dots (optimized for mobile)
-      const outerCount = isMobile ? 50 : 180;
+      const outerCount = isMobile ? 36 : 180;
       const outerGeo = new THREE.BufferGeometry();
       const outerPos = new Float32Array(outerCount * 3);
       for (let i = 0; i < outerCount; i++) {
@@ -125,7 +125,7 @@ const HeroCanvas3D = () => {
       }
       outerGeo.setAttribute('position', new THREE.BufferAttribute(outerPos, 3));
       const outerMat = new THREE.PointsMaterial({
-        size: isMobile ? 0.5 : 0.4,
+        size: isMobile ? 0.55 : 0.4,
         map: particleTexture,
         color: new THREE.Color('#E76F51'),
         transparent: true,
@@ -136,7 +136,7 @@ const HeroCanvas3D = () => {
       outerPoints = new THREE.Points(outerGeo, outerMat);
       scene.add(outerPoints);
 
-      // 6. Mouse tracking handler (desktop only)
+      // 6. Mouse tracking handler (desktop only to prevent mobile scroll overhead)
       const handleMouseMove = (e) => {
         if (window.innerWidth < 768) return;
         targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -158,16 +158,26 @@ const HeroCanvas3D = () => {
       }
       window.addEventListener('resize', handleResize);
 
-      // 8. Animation Loop
+      // 8. Animation Loop with intelligent visibility & viewport intersection pause
       let clock = new THREE.Clock();
+      let isVisible = true;
+      let isTabActive = typeof document !== 'undefined' ? !document.hidden : true;
+
       const animate = () => {
+        if (!isVisible || !isTabActive) {
+          animationFrameId = null;
+          return;
+        }
+
         animationFrameId = requestAnimationFrame(animate);
 
         const elapsedTime = clock.getElapsedTime();
 
-        // Smooth mouse damping
-        mouseX += (targetMouseX - mouseX) * 0.05;
-        mouseY += (targetMouseY - mouseY) * 0.05;
+        // Smooth mouse damping (only computed if desktop)
+        if (!isMobile) {
+          mouseX += (targetMouseX - mouseX) * 0.05;
+          mouseY += (targetMouseY - mouseY) * 0.05;
+        }
 
         // Subtle continuous rotation
         points.rotation.y = elapsedTime * 0.07 + mouseX * 0.4;
@@ -179,14 +189,46 @@ const HeroCanvas3D = () => {
         renderer.render(scene, camera);
       };
 
-      animate();
+      const startLoopIfNeeded = () => {
+        if (isVisible && isTabActive && !animationFrameId) {
+          animationFrameId = requestAnimationFrame(animate);
+        }
+      };
+
+      // IntersectionObserver: Pause rendering when Hero is scrolled out of view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            startLoopIfNeeded();
+          }
+        },
+        { threshold: 0.02 }
+      );
+      observer.observe(container);
+
+      // Visibilitychange: Pause rendering when browser tab is inactive
+      const handleVisibilityChange = () => {
+        isTabActive = !document.hidden;
+        if (isTabActive && isVisible) {
+          startLoopIfNeeded();
+        }
+      };
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+
+      startLoopIfNeeded();
 
       // Cleanup
       return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
+        if (!isMobile) {
+          window.removeEventListener('mousemove', handleMouseMove);
+        }
         window.removeEventListener('resize', handleResize);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        if (observer) observer.disconnect();
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
-        if (renderer && renderer.domElement) {
+        if (renderer && renderer.domElement && container.contains(renderer.domElement)) {
           container.removeChild(renderer.domElement);
           renderer.dispose();
         }

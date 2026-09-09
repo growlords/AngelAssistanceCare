@@ -6,7 +6,7 @@ const AmbientBackground = () => {
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden select-none">
       {/* Top right gentle sky & aqua aura */}
       <motion.div
-        className="absolute -top-[20%] -right-[10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-br from-[#2A9D8F]/10 via-[#38A3D8]/8 to-transparent blur-[120px]"
+        className="absolute -top-[20%] -right-[10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-br from-[#2A9D8F]/10 via-[#38A3D8]/8 to-transparent blur-[80px] sm:blur-[120px] transform-gpu will-change-transform"
         animate={{
           x: [0, 25, -20, 0],
           y: [0, -25, 20, 0],
@@ -21,7 +21,7 @@ const AmbientBackground = () => {
 
       {/* Middle left warm sunlit peach & coral glow */}
       <motion.div
-        className="absolute top-[35%] -left-[15%] w-[48vw] h-[48vw] rounded-full bg-gradient-to-tr from-[#E76F51]/8 via-[#F4A261]/8 to-transparent blur-[140px]"
+        className="absolute top-[35%] -left-[15%] w-[48vw] h-[48vw] rounded-full bg-gradient-to-tr from-[#E76F51]/8 via-[#F4A261]/8 to-transparent blur-[90px] sm:blur-[140px] transform-gpu will-change-transform"
         animate={{
           x: [0, -20, 20, 0],
           y: [0, 35, -25, 0],
@@ -36,7 +36,7 @@ const AmbientBackground = () => {
 
       {/* Bottom right supportive soft mint/teal pulse */}
       <motion.div
-        className="absolute -bottom-[15%] right-[10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-tl from-[#52B788]/8 via-[#2A9D8F]/6 to-transparent blur-[130px]"
+        className="absolute -bottom-[15%] right-[10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-tl from-[#52B788]/8 via-[#2A9D8F]/6 to-transparent blur-[80px] sm:blur-[130px] transform-gpu will-change-transform"
         animate={{
           x: [0, 20, -25, 0],
           y: [0, -20, 25, 0],
